@@ -83,9 +83,6 @@
   color: #242424;
 }
 
-.menu-btn {
-}
-
 @media (min-width: 768px) {
   .menu-btn {
     display: none;

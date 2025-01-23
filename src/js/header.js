@@ -1,6 +1,11 @@
 export function handleNavClick() {
   const navSelector = document.querySelector(".js-header-nav-list");
   const logoElement = document.querySelector(".logo");
+  const mobileMenuButton = document.querySelector(".menu-btn")
+
+  mobileMenuButton.addEventListener("click", () => {
+    alert("Mobile menu will be added soon, enjoy ;)");
+  })
 
   const savedPath = localStorage.getItem("activePath");
   const currentPath = window.location.pathname;
