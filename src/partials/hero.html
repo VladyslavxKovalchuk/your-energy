@@ -1,3 +1,81 @@
-<section class="section--hero">
-  <div class="container">hero</div>
+<section class="section--hero" aria-label="Hero section">
+  <div class="container hero-container">
+    <div class="hero-title-img">
+      <h1 class="hero-title">
+        <svg id="icon-sun" class="hero-icon" width="38" height="38">
+          <title>Sun Icon</title>
+          <use href="./img/sprite.svg#icon-sun"></use>
+        </svg>
+        Get <span class="accent-title">body</span> in <br />shape, Stay healthy
+      </h1>
+      <img
+        class="hero-mini-img"
+        src="../img/hero/hero_mini_img.jpg"
+        srcset="../img/hero/hero_mini_img@2x.jpg"
+        alt="young women doing fitness outdoors together"
+        width="168"
+        height="100"
+      />
+    </div>
+    <p class="hero-text">
+      Transform your physique and embrace a healthier lifestyle with our
+      comprehensive fitness and nutrition support.
+    </p>
+    <picture class="hero-main-img">
+      <source
+        media="(max-width: 767px)"
+        srcset="../img/hero/hero_mob.jpg 1x, ../img/hero/hero_mob@2x.jpg 2x"
+      />
+      <source
+        media="(min-width: 768px) and (max-width: 1439px)"
+        srcset="../img/hero/hero_tab.jpg 1x, ../img/hero/hero_tab@2x.jpg 2x"
+      />
+      <source
+        media="(min-width: 1440px)"
+        srcset="../img/hero/hero_des.jpg 1x, ../img/hero/hero_des@2x.jpg 2x"
+      />
+      <img
+        src="../img/hero/hero_mob.jpg"
+        alt="women sportswear working out outdoors"
+      />
+    </picture>
+    <ul class="hero-tags">
+      <li class="hero-tag">
+        <a
+          class="hero-tag-text"
+          href="https://www.instagram.com/explore/tags/sport/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >#Sport</a
+        >
+      </li>
+      <li class="hero-tag">
+        <a
+          class="hero-tag-text"
+          href="https://www.instagram.com/explore/tags/healthy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >#Healthy</a
+        >
+      </li>
+      <li class="hero-tag">
+        <a
+          class="hero-tag-text"
+          href="https://www.instagram.com/explore/tags/workout/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >#Workout</a
+        >
+      </li>
+      <li class="hero-tag">
+        <a
+          class="hero-tag-text"
+          href="https://www.instagram.com/explore/tags/diet/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >#Diet</a
+        >
+      </li>
+    </ul>
+  </div>
 </section>
