@@ -1,3 +1,124 @@
-div {
+.hero-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero-title-img {
+  display: flex;
+}
+.hero-icon {
+  vertical-align: -5px;
+}
+.hero-title {
+  color: var(--black);
+  width: 100%;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px;
+  letter-spacing: -0.76px;
+}
+.accent-title {
+  font-style: italic;
+  text-transform: capitalize;
+  letter-spacing: -0.76px;
+}
+.hero-text {
+  color: var(--black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+}
+.hero-mini-img {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .hero-icon {
+    width: 59px;
+    height: 59px;
+    flex-shrink: 0;
+  }
+  .hero-title {
+    font-size: 74px;
+    line-height: 74px;
+    letter-spacing: -1.48px;
+  }
+  .accent-title {
+    font-size: 74px;
+    line-height: 74px;
+    letter-spacing: -1.48px;
+  }
+  .hero-text {
     display: block;
+    max-width: 528px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.36px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-mini-img {
+    display: block;
+    border-radius: 20px;
+    width: 168px;
+    height: 100px;
+  }
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+}
+.hero-tag {
+  border-radius: 30px;
+  border: 1px solid var(--black);
+  padding: 4px 12px;
+}
+
+.hero-tag:hover,
+.hero-tag:focus {
+  background-color: #d4d4d4;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);      
+}
+.hero-tag-text {
+  color: var(--black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+.hero-main-img img {
+  display: block;
+  border-radius: 30px;
+}
+@media screen and (min-width: 768px) {
+  .hero-tags {
+    justify-content: end;
+  }
+  .hero-tag {
+    padding: 4px 16px;
+  }
+  .hero-tag-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .hero-main-img img {
+    border-radius: 60px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-tags {
+    position: absolute;
+    right: 30px;
+    top: 136px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
 }
