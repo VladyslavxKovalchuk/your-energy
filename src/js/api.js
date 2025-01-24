@@ -11,3 +11,11 @@ export const fetchCategories = (filter, page, perPage) => {
   };
   return axios.get(`/filters`, { params: requestParams });
 };
+
+export const fetchExerciseById = (id) => {
+  return axios.get(`/exercises/${id}`);
+};
+
+export const fetchExercises = (filters) => {
+  return axios.get('/exercises', { params:filters });
+};
