@@ -54,6 +54,11 @@ button {
 .section--hero {
   padding-bottom: 40px;
 }
+
+.hidden {
+  display: none !important;
+}
+
 @media screen and (min-width: 768px) {
   .section--hero {
     padding-bottom: 64px;
@@ -81,6 +86,7 @@ button {
 @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
+    padding: 0 20px;
   }
 }
 @media screen and (min-width: 768px) {
