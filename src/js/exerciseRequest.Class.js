@@ -30,6 +30,10 @@ class ExerciseRequest {
     }
   }
 
+  addKeyword(keyword) {
+    this.keyword = keyword
+  }
+
   toParams() {
     const params = {};
     if (this.bodypart) params.bodypart = this.bodypart;

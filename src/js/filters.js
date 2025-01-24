@@ -1,4 +1,6 @@
-import { showCategories } from './categories.js';
+import { showCategories, findExerciseFilterType } from './categories.js';
+import { ShowExercisesByCategory} from './exercises.js'
+import ExerciseFilterType from './exerciseFilterType.js';
 
 const filterTabs = document.querySelectorAll('.filter-tab-button');
 const searchForm = document.querySelector('.filter-form-container');
@@ -40,8 +42,7 @@ if (searchButton) {
     searchButton.addEventListener('click', (event) => {
         event.preventDefault()
         searchString = searchStringElement.value
-        // call function in exircises carts
-        console.log(`filterName: ${filterName}  categoryName: ${categoryName} search: ${searchString}`)
+        ShowExercisesByCategory(findExerciseFilterType(filterName), categoryName, searchString)
     })
 }
 
