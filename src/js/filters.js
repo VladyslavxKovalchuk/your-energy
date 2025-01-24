@@ -1,4 +1,4 @@
-import { showCategories, findExerciseFilterType } from './categories.js';
+import { showCategories } from './categories.js';
 import { ShowExercisesByCategory} from './exercises.js'
 import ExerciseFilterType from './exerciseFilterType.js';
 
@@ -45,6 +45,17 @@ if (searchButton) {
         ShowExercisesByCategory(findExerciseFilterType(filterName), categoryName, searchString)
     })
 }
+
+function findExerciseFilterType(filter) {
+    var lowerCaseFilter = filter.toLowerCase();
+    if (lowerCaseFilter === 'body parts') {
+        lowerCaseFilter = 'bodypart'
+    }
+    return Object.values(ExerciseFilterType).find(
+      value => value === lowerCaseFilter
+    );
+  };
+
 
 function updateTitle(someText) {
     slashElement.style.display = 'inline'
