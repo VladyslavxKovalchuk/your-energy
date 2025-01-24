@@ -3,7 +3,7 @@
 import { fetchCategories } from './api.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
 import { ShowExercisesByCategory } from './exercises.js';
-import ExerciseFilterType from './ExerciseFilterType.js';
+import ExerciseFilterType from './exerciseFilterType.js';
 
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
