@@ -9,13 +9,13 @@ export const fetchCategories = (filter, page, perPage) => {
     page: page,
     limit: perPage,
   };
-  return axios.get(`/api/filters`, { params: requestParams });
+  return axios.get(`/filters`, { params: requestParams });
 };
 
 export const fetchExerciseById = (id) => {
-  return axios.get(`/api/exercises/${id}`);
+  return axios.get(`/exercises/${id}`);
 };
 
 export const fetchExercises = (filters) => {
-  return axios.get('/api/exercises', { params:filters });
+  return axios.get('/exercises', { params:filters });
 };

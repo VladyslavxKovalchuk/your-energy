@@ -17,7 +17,7 @@ const categoryMap = {
     'button-equipment': 'Equipment'
 }
 
-axios.defaults.baseURL = "https://your-energy.b.goit.study";
+// axios.defaults.baseURL = "https://your-energy.b.goit.study";
 
 export async function getFilters(filterName, limit, page=1) {
     return await axios.get('/api/filters', {
