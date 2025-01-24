@@ -9,5 +9,5 @@ export const fetchCategories = (filter, page, perPage) => {
     page: page,
     limit: perPage,
   };
-  return axios.get(`/filters`, { params: requestParams });
+  return axios.get(`/api/filters`, { params: requestParams });
 };

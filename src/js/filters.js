@@ -1,4 +1,5 @@
 import axios from "axios";
+import { showCategories } from './categories.js';
 
 const filterTabs = document.querySelectorAll('.filter-tab-button');
 const searchForm = document.querySelector('.filter-form-container');
@@ -49,14 +50,12 @@ filterTabs.forEach(tab => {
             tab.classList.add('active');
             const buttonId = event.target.id;
             const categoryName = categoryMap[buttonId];
-        //import and uncomment
-        //     showCategories(categoryName, 1)
-        //         .then(pages =>
-        //             console.log(`Execute function for pagination with parameter ${JSON.stringify(pages)}`)
-        //         )
-        //         .catch(err => console.log(err));
-        // 
-        renderFilterByCategory(categoryName+'Name', categoryName)
+            showCategories(categoryName, 1)
+                .then(pages =>
+                    console.log(`Execute function for pagination with parameter ${JSON.stringify(pages)}`)
+                )
+                .catch(err => console.log(err));
+    
         }
 })})
 
@@ -79,7 +78,7 @@ function clearFilter() {
 
 
 export function renderFilterByCategory(filterName, categoryName) {
-    updateTitle(filterName)
+    updateTitle(categoryName)
     searchForm.style.display = 'block'
     // call function in exircises carts
 }
