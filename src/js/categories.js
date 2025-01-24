@@ -5,6 +5,8 @@ import { getGategoriesOnPage, getResolution } from './utils.js';
 import { ShowExercisesByCategory } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
 import { renderFilterByCategory } from './filters.js';
+import { showLoader, hideLoader } from './loader.js';
+
 
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
@@ -28,6 +30,7 @@ export const createGalleryCards = categoriesArr => {
 
 export const showCategories = async (filter, queriedPage) => {
   try {
+    showLoader();
     const response = await fetchCategories(
       filter,
       queriedPage,
@@ -47,6 +50,8 @@ export const showCategories = async (filter, queriedPage) => {
     return { page, perPage, totalPages };
   } catch (err) {
     console.log(err);
+  } finally {
+    hideLoader();
   }
 };
 
@@ -73,5 +78,7 @@ const onCategoryListElClick = event => {
 
  export const findExerciseFilterType = (filter) => {
   const lowerCaseFilter = filter.toLowerCase();
-  return Object.values(ExerciseFilterType).find(value => value === lowerCaseFilter);
+  return Object.values(ExerciseFilterType).find(
+    value => value === lowerCaseFilter
+  );
 };
