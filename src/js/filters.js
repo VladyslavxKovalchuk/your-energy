@@ -4,8 +4,12 @@ import { showCategories } from './categories.js';
 const filterTabs = document.querySelectorAll('.filter-tab-button');
 const searchForm = document.querySelector('.filter-form-container');
 const searchButton = document.querySelector('.search-button');
+const searchStringElement = document.querySelector('.search-string')
 const additionalTextElement = document.querySelector('.additional-title-filter');
 const slashElement = document.querySelector('.slash-in-filter');
+var filterName = ''
+var categoryName = ''
+var searchString = ''
 
 const categoryMap = {
     'button-muscles': 'Muscles',
@@ -63,7 +67,9 @@ filterTabs.forEach(tab => {
 
 searchButton.addEventListener('click', (event) => {
     event.preventDefault()
+    this.searchString = searchStringElement.value
     // call function in exircises carts
+    console.log(`filterName: ${this.filterName}  categoryName: ${this.categoryName} search: ${this.searchString}`)
 })
 
 function updateTitle(someText) {
@@ -79,9 +85,21 @@ function clearFilter() {
 
 
 export function renderFilterByCategory(filterName, categoryName) {
+    updateParams(filterName, categoryName)
     updateTitle(categoryName)
     searchForm.style.display = 'block'
     // call function in exircises carts
+    console.log(`filterName: ${this.filterName}  categoryName: ${this.categoryName}`)
 }
 
+function updateParams(filterName, categoryName) {
+    this.filterName = filterName
+    this.categoryName = categoryName
+}
 
+function clearParams() {
+    this.filterName = ''
+    this.categoryName = ''
+    searchStringElement.value = ''
+    this.searchString = ''
+}
