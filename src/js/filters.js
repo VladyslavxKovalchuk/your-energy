@@ -67,9 +67,9 @@ filterTabs.forEach(tab => {
 
 searchButton.addEventListener('click', (event) => {
     event.preventDefault()
-    this.searchString = searchStringElement.value
+    searchString = searchStringElement.value
     // call function in exircises carts
-    console.log(`filterName: ${this.filterName}  categoryName: ${this.categoryName} search: ${this.searchString}`)
+    console.log(`filterName: ${filterName}  categoryName: ${categoryName} search: ${searchString}`)
 })
 
 function updateTitle(someText) {
@@ -81,25 +81,26 @@ function clearFilter() {
     slashElement.style.display = 'none'
     searchForm.style.display = 'none'
     additionalTextElement.textContent = ''
+    clearParams()
 }
 
 
-export function renderFilterByCategory(filterName, categoryName) {
-    updateParams(filterName, categoryName)
-    updateTitle(categoryName)
+export function renderFilterByCategory(filter, category) {
+    updateParams(filter, category)
+    updateTitle(category)
     searchForm.style.display = 'block'
     // call function in exircises carts
-    console.log(`filterName: ${this.filterName}  categoryName: ${this.categoryName}`)
+    console.log(`filterName: ${filterName}  categoryName: ${categoryName}`)
 }
 
-function updateParams(filterName, categoryName) {
-    this.filterName = filterName
-    this.categoryName = categoryName
+function updateParams(filter, category) {
+    filterName = filter
+    categoryName = category
 }
 
 function clearParams() {
-    this.filterName = ''
-    this.categoryName = ''
+    filterName = ''
+    categoryName = ''
     searchStringElement.value = ''
-    this.searchString = ''
+    searchString = ''
 }

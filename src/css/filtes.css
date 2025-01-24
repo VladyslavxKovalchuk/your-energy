@@ -4,6 +4,9 @@
     width: 100%;
 }
 
+.filter-container {
+    margin-bottom: 20px;
+}
 
 .filters-tabs {
     display: flex;
@@ -106,6 +109,10 @@
 }
 
 @media screen and (min-width: 768px) {
+    .filter-container {
+        margin-bottom: 32px;
+    }
+
     .filters {
         flex-direction: row;
         align-items: center; 

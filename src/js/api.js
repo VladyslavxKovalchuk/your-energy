@@ -13,9 +13,9 @@ export const fetchCategories = (filter, page, perPage) => {
 };
 
 export const fetchExerciseById = (id) => {
-  return axios.get(`/exercises/${id}`);
+  return axios.get(`/api/exercises/${id}`);
 };
 
 export const fetchExercises = (filters) => {
-  return axios.get('/exercises', { params:filters });
+  return axios.get('/api/exercises', { params:filters });
 };
