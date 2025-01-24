@@ -1,30 +1,50 @@
+'use strict';
+import { drawMarkupList, fetchCardByID } from './fav-functions/helper';
+
 const list = document.querySelector('.fav-list-card');
+const textDefault = document.querySelector('.fav-text-default');
 
-const listId = [1, 2, 3, 4, 5, 6, 7, 8];
+let listId = [];
+const arrayID = [
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+];
+let markupCards = '';
+let getData = [];
 
-const markupCards = listId.map(id => {
-  return `<li class="list-card-item" data-id="${id}">
-                <div class="list-card-wrapper">
-                  <div class="box-buttons">
-                    <div class="card-name-box">
-                      <p class="list-card-name">tags</p>
-                    </div>
-                    <button class="btn-start" type="button">Start</button>
-                  </div>
-                  <h3 class="list-title-card">title card</h3>
-                  <div class="info-text-box">
-                    <p class="list-info-about-body">
-                      Burned calories: <span class="info-text-body">220 / 3 min</span>
-                    </p>
-                    <p class="list-info-about-body">
-                      Body part: <span class="info-text-body">Waist</span>
-                    </p>
-                    <p class="list-info-about-body">
-                      Target: <span class="info-text-body">Biceps</span>
-                    </p>
-                  </div>
-                </div>
-              </li>`;
-});
+const readFromLS = async () => {
+  listId = JSON.parse(localStorage.getItem('keyID'));
 
-list.insertAdjacentHTML('beforeend', markupCards.join(''));
+  if (listId === null) {
+    listId = [];
+  }
+
+  if (listId.length === 0) {
+    if (textDefault.classList.contains('is-visible')) {
+      textDefault.classList.remove('is-visible');
+    }
+    return;
+  } else {
+    try {
+      const promise = await Promise.all(listId.map(id => fetchCardByID(id)));
+      getData = promise.map(obj => obj.data);
+      markupCards = drawMarkupList(getData);
+      if (list) {
+        textDefault.classList.add('is-visible');
+        list.insertAdjacentHTML('beforeend', markupCards);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+};
+
+localStorage.setItem('keyID', JSON.stringify(arrayID));
+
+readFromLS();
