@@ -1,11 +1,30 @@
 export function handleNavClick() {
   const navSelector = document.querySelector(".js-header-nav-list");
   const logoElement = document.querySelector(".logo");
-  const mobileMenuButton = document.querySelector(".menu-btn")
+  const mobileMenuButton = document.querySelector(".menu-btn");
+  const closeMobileMenuButton = document.querySelector(".close-btn-menu");
+  const menuEl = document.querySelector(".mobile-menu-backdrop");
+  const anchorCloseMenuItems = document.querySelectorAll('.menu-item');
 
-  mobileMenuButton.addEventListener("click", () => {
-    alert("Mobile menu will be added soon, enjoy ;)");
-  })
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener("click", () => {
+      menuEl.classList.add("is-open");
+    });
+  }
+
+  if (closeMobileMenuButton) {
+    closeMobileMenuButton.addEventListener("click", () => {
+      menuEl.classList.remove("is-open");
+    });
+  }
+
+  if (anchorCloseMenuItems) {
+    anchorCloseMenuItems.forEach(anchorItem => {
+      anchorItem.addEventListener("click", () => {
+        menuEl.classList.remove("is-open");
+      });
+    });
+  }
 
   const savedPath = localStorage.getItem("activePath");
   const currentPath = window.location.pathname;

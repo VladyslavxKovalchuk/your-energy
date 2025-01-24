@@ -2,10 +2,11 @@ import ExerciseList from './exerciseList.Class.js';
 import ExerciseRequest from './exerciseRequest.Class.js';
 
 const exerciseContainer = document.querySelector('.exercise-container');
+let exerciseList = new ExerciseList();
 
 const fetchAndRenderFilteredExercises = async (exerciseRequest) => {
   try {
-    const exerciseList = await ExerciseList.fetchWithFilters(exerciseRequest);
+    exerciseList = await ExerciseList.fetchWithFilters(exerciseRequest);
     const list = exerciseList.render(true,false);
     exerciseContainer.innerHTML = ''; // Clear existing exercises
     exerciseContainer.appendChild(list);
