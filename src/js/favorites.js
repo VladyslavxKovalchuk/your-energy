@@ -44,7 +44,4 @@ const readFromLS = async () => {
     }
   }
 };
-
-localStorage.setItem('keyID', JSON.stringify(arrayID));
-
-readFromLS();
+}
