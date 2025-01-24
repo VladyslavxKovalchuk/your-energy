@@ -26,5 +26,6 @@ const markupCards = listId.map(id => {
                 </div>
               </li>`;
 });
-
-list.insertAdjacentHTML('beforeend', markupCards.join(''));
+if (list) {
+  list.insertAdjacentHTML('beforeend', markupCards.join(''));
+}
