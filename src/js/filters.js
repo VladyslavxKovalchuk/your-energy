@@ -1,4 +1,3 @@
-import axios from "axios";
 import { showCategories } from './categories.js';
 
 const filterTabs = document.querySelectorAll('.filter-tab-button');
@@ -16,33 +15,6 @@ const categoryMap = {
     'button-bodypart': 'Body parts',
     'button-equipment': 'Equipment'
 }
-
-// axios.defaults.baseURL = "https://your-energy.b.goit.study";
-
-export async function getFilters(filterName, limit, page=1) {
-    return await axios.get('/api/filters', {
-      params: {
-          filter: filterName,
-          page: page,
-          limit: limit
-        }
-      })
-}
-
-export async function getExercises(params) {
-    return await axios.get('/api/exercises', {
-      params: params
-      })
-      //   {
-//     keyword: keyword,
-//     bodypart: bodypart,
-//     muscles: muscles,
-//     equipment: equipment,
-//     page: page,
-//     limit: limit,
-//   }
-}
-
 
 filterTabs.forEach(tab => {
     tab.addEventListener('click', (event) => {
