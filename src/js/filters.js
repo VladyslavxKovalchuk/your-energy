@@ -43,6 +43,7 @@ export async function getExercises(params) {
 filterTabs.forEach(tab => {
     tab.addEventListener('click', (event) => {
         event.preventDefault()
+        clearFilter()
         if (event.target && event.target.matches('button.filter-tab-button')) {
             filterTabs.forEach(btn => {
                 btn.classList.remove('active');
