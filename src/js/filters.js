@@ -36,13 +36,14 @@ filterTabs.forEach(tab => {
         }
 })})
 
-
-searchButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    searchString = searchStringElement.value
-    // call function in exircises carts
-    console.log(`filterName: ${filterName}  categoryName: ${categoryName} search: ${searchString}`)
-})
+if (searchButton) {
+    searchButton.addEventListener('click', (event) => {
+        event.preventDefault()
+        searchString = searchStringElement.value
+        // call function in exircises carts
+        console.log(`filterName: ${filterName}  categoryName: ${categoryName} search: ${searchString}`)
+    })
+}
 
 function updateTitle(someText) {
     slashElement.style.display = 'inline'
