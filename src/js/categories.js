@@ -2,6 +2,8 @@
 
 import { fetchCategories } from './api.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
+import { ShowExercisesByCategory } from './exercises.js';
+import ExerciseFilterType from './exerciseFilterType.js';
 import { renderFilterByCategory } from './filters.js';
 
 const categoryListEl = document.querySelector('.category-list');
@@ -64,6 +66,12 @@ const onCategoryListElClick = event => {
   const filter = targetCard.getAttribute('data-filter');
   const name = targetCard.getAttribute('data-name');
   hideCategories();
+  ShowExercisesByCategory(findExerciseFilterType(filter), name);
   renderFilterByCategory(filter, name)
   console.log(`Execute function for rendering exercises (${filter}; ${name})`);
+};
+
+ const findExerciseFilterType = (filter) => {
+  const lowerCaseFilter = filter.toLowerCase();
+  return Object.values(ExerciseFilterType).find(value => value === lowerCaseFilter);
 };
