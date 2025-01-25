@@ -31,5 +31,6 @@ export function ShowExercisesByCategory(filterType, FilterValue, keyword=null) {
 
 export function HideExercises() {
   exerciseContainer.innerHTML = '';
-  exerciseContainer.classList.add('hidden');
+  if (!exerciseContainer.classList.contains('hidden'))
+    exerciseContainer.classList.add('hidden');
 }
