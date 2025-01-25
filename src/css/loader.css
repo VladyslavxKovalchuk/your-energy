@@ -21,6 +21,10 @@
   transform: translateZ(0);
 }
 
+.loader.hidden{
+  display: none;
+}
+
 @keyframes mulShdSpin {
   0%,
   100% {
