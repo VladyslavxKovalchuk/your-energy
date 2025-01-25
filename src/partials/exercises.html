@@ -9,7 +9,9 @@
       <div class="filter-form-container" style="display: none">
         <form class="filter-search-form">
           <div class="search-container">
-            <label for="search-input" class="visually-hidden">Search Exercises</label>
+            <label for="search-input" class="visually-hidden"
+              >Search Exercises</label
+            >
             <input
               type="text"
               id="search-input"
@@ -18,7 +20,11 @@
               placeholder="Search"
               aria-label="Search Exercises"
             />
-            <button type="submit" class="search-button" aria-label="Submit Search">
+            <button
+              type="submit"
+              class="search-button"
+              aria-label="Submit Search"
+            >
               <svg class="icon" width="18" height="18" aria-hidden="true">
                 <use href="./img/sprite.svg#search"></use>
               </svg>
@@ -56,15 +62,15 @@
     </div>
   </div>
   <div class="container exercises-container">
-    <div> 
-    <div class="category-container active">
-      <ul class="category-list"></ul>
+    <div>
+      <div class="category-container active">
+        <ul class="category-list"></ul>
+      </div>
+      <div class="exercise-container">
+        <div class="exercise-list"></div>
+      </div>
+      <div class="container pagination-container active"></div>
     </div>
-    <div class="exercise-container">
-      <div class="exercise-list"></div>
-    </div>
-    <div class="container pagination-container active"></div>
-  </div>
     <div class="quote-container">
       <div class="box1-qoute">
         <svg id="icon-run" class="run-icon" width="34" height="32">
@@ -79,13 +85,7 @@
               <use href="./img/sprite.svg#icon-commas"></use>
             </svg>
           </div>
-          <p class="quote-text">
-            A lot of times I find that people who are blessed with the most
-            talent don't ever develop that attitude, and the ones who aren't
-            blessed in that way are the most competitive and have the biggest
-            heart.
-          </p>
-          <p class="quote-signature">Tom Brady</p>
+          <div class="js-quote"></div>
         </div>
       </div>
       <div class="img-wrap">
