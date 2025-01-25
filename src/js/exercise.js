@@ -1,7 +1,7 @@
 import { fetchExerciseById } from './api.js';
 import sprite from '../img/sprite.svg';
 import noImage from '../img/no-image.jpg';
-import { createRating } from './createrating.js';
+import { createRating } from './create-rating.js';
 import { showLoader, hideLoader } from './loader.js';
 
 class Exercise {
