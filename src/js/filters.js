@@ -19,8 +19,6 @@ const categoryMap = {
     'button-equipment': 'Equipment'
 }
 
-filterTabs[0].classList.add('active');
-
 if (searchStringElement) {
     searchStringElement.addEventListener('input', function() {
         canselSearchButton.style.display = this.value.length > 0 ? 'block' : 'none';
