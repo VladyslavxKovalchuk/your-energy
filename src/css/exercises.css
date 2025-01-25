@@ -126,6 +126,10 @@
   margin-left: 16px;
 }
 
+.exercise-title::first-letter {
+  text-transform: uppercase;
+}
+
 .exercise-details {
   display: flex;
   justify-content: left;

@@ -1,17 +1,17 @@
 'use strict';
 
 import { fetchCategories } from './api.js';
+import { showPagination, hidePagination } from './pagination.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
-import { ShowExercisesByCategory,HideExercises } from './exercises.js';
+import { ShowExercisesByCategory, HideExercises } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
 import { renderFilterByCategory } from './filters.js';
 import { showLoader, hideLoader } from './loader.js';
 
-
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
 
-export const createGalleryCards = categoriesArr => {
+export const createPaginationItems = categoriesArr => {
   return categoriesArr.reduce((acc, el) => {
     return (
       acc +
@@ -43,9 +43,17 @@ export const showCategories = async (filter, queriedPage) => {
       return { page, perPage, totalPages };
     }
 
-    categoryListEl.innerHTML = createGalleryCards(results);
+    categoryListEl.innerHTML = createPaginationItems(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
+    showPagination(
+      '.pagination-container',
+      queriedPage,
+      totalPages,
+      showCategories,
+      filter,
+      page
+    );
     HideExercises();
 
     return { page, perPage, totalPages };
@@ -58,13 +66,13 @@ export const showCategories = async (filter, queriedPage) => {
 
 export const hideCategories = () => {
   categoryListEl.innerHTML = '';
+  hidePagination('.pagination-container');
   categoryListEl.removeEventListener('click', onCategoryListElClick);
   categoryContainerEl.classList.remove('active');
 };
 
 const onCategoryListElClick = event => {
   event.preventDefault();
-  console.log(getResolution());
   if (event.target === event.currentTarget) {
     return;
   }
@@ -73,11 +81,10 @@ const onCategoryListElClick = event => {
   const name = targetCard.getAttribute('data-name');
   hideCategories();
   ShowExercisesByCategory(findExerciseFilterType(filter), name);
-  renderFilterByCategory(filter, name)
-  console.log(`Execute function for rendering exercises (${filter}; ${name})`);
+  renderFilterByCategory(filter, name);
 };
 
-const findExerciseFilterType = (filter) => {
+const findExerciseFilterType = filter => {
   const lowerCaseFilter = filter.toLowerCase();
   return Object.values(ExerciseFilterType).find(
     value => value === lowerCaseFilter
