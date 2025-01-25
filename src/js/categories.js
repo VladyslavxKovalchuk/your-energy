@@ -2,7 +2,7 @@
 
 import { fetchCategories } from './api.js';
 import { showPagination, hidePagination } from './pagination.js';
-import { getGategoriesOnPage, getResolution } from './utils.js';
+import { getGategoriesOnPage } from './utils.js';
 import { ShowExercisesByCategory, HideExercises } from './exercises.js';
 import ExerciseFilterType from './exercise.filter-type.js';
 import { renderFilterByCategory } from './filters.js';
@@ -11,7 +11,7 @@ import { showLoader, hideLoader } from './loader.js';
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
 
-export const createPaginationItems = categoriesArr => {
+export const createCategoriesItems = categoriesArr => {
   return categoriesArr.reduce((acc, el) => {
     return (
       acc +
@@ -37,14 +37,13 @@ export const showCategories = async (filter, queriedPage) => {
       queriedPage,
       getGategoriesOnPage()
     );
-    const { page, perPage, totalPages, results } = response.data;
+    const { page, totalPages, results } = response.data;
 
     if (results.length === 0) {
-      console.log('There are no categories for the specified filter');
-      return { page, perPage, totalPages };
+      categoryListEl.innerHTML = '';
     }
 
-    categoryListEl.innerHTML = createPaginationItems(results);
+    categoryListEl.innerHTML = createCategoriesItems(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
     showPagination(
@@ -56,8 +55,6 @@ export const showCategories = async (filter, queriedPage) => {
       page
     );
     HideExercises();
-
-    return { page, perPage, totalPages };
   } catch (err) {
     console.log(err);
   } finally {
@@ -91,3 +88,5 @@ const findExerciseFilterType = filter => {
     value => value === lowerCaseFilter
   );
 };
+
+showCategories('Muscles', 1);
