@@ -1,7 +1,6 @@
 .exercises-container {
   display: flex;
   flex-direction: column;
-  min-height: 500px;
 }
 @media screen and (min-width: 1440px) {
   .exercises-container {
@@ -12,6 +11,7 @@
 .exercise-container {
   width: 100%;
   display: none;
+  min-height: 500px;
 }
 .exercise-container.active {
   display: block;
