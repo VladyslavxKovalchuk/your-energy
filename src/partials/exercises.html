@@ -11,14 +11,21 @@
                 <div class="search-container">
                     <input type="text" class="search-string" autofocus placeholder="Search"/>
                     <button type="submit" class="search-button">
-                        <img src="../img/search.svg" alt="search ccon" class="button-icon" width="18" height="18">
+                        <svg class="icon" width="18" height="18">
+                            <use href="./img/sprite.svg#search"></use>
+                        </svg>
+                    </button>
+                    <button type="reset" class="cansel-search-button" style="display: none;">
+                        <svg class="icon" width="8" height="8">
+                            <use href="./img/sprite.svg#search-cansel"></use>
+                        </svg>
                     </button>
                 </div>
             </form>
         </div>
         <ul class="filters-tabs">
             <li class="filter-tab-button-element">
-                <button class="filter-tab-button" id="button-muscles">Muscles</button>
+                <button class="filter-tab-button active" id="button-muscles" >Muscles</button>
             </li>
             <li class="filter-tab-button-element">
                 <button class="filter-tab-button" id="button-bodypart">Body parts</button>
