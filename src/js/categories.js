@@ -1,9 +1,9 @@
 'use strict';
 
 import { fetchCategories } from './api.js';
-import { showPagination } from './pagination.js';
+import { showPagination, hidePagination } from './pagination.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
-import { ShowExercisesByCategory,HideExercises } from './exercises.js';
+import { ShowExercisesByCategory, HideExercises } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
 import { renderFilterByCategory } from './filters.js';
 import { showLoader, hideLoader } from './loader.js';
@@ -66,6 +66,7 @@ export const showCategories = async (filter, queriedPage) => {
 
 export const hideCategories = () => {
   categoryListEl.innerHTML = '';
+  hidePagination('.pagination-container');
   categoryListEl.removeEventListener('click', onCategoryListElClick);
   categoryContainerEl.classList.remove('active');
 };
