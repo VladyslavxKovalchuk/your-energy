@@ -26,16 +26,22 @@
     margin: auto;
 }
 
-.pagination-item:hover {
-    background-color: var(--black);
-    fill: var(--white);
-    color: var(--white);
+.pagination-item.hidden-btn {
+    display: none;
 }
+
 
 .pagination-item.accent {
     color: var(--black);
     fill: var(--black);
     border-color: var(--black);
+}
+
+.pagination-item:hover {
+    background-color: var(--black);
+    fill: var(--white);
+    color: var(--white);
+    cursor: pointer;
 }
 
 .outline {

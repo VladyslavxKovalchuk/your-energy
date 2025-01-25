@@ -11,34 +11,37 @@ const PAGINATION_ICO = {
 const generateInnerPagesArr = (currentPage, totalPages) => {
   const arr = [];
 
-  if (totalPages - currentPage <= 3) {
-    for (let i = totalPages; i > 0 && arr.length < 4; i--) {
-      arr.unshift(i);
+  if (currentPage < 4) {
+    for (let i = 0; i < 4; i++) {
+      arr.push(1 + i);
     }
   }
 
-  if (arr.length === 4 && arr[0] != 1) {
-    arr[0] = 0;
+  if (totalPages - currentPage < 3 && arr.length === 0) {
+    for (let i = 0; i < 4; i++) {
+      arr.unshift(totalPages - i);
+    }
   }
 
   if (arr.length === 0) {
-    arr.push(currentPage);
-    for (let i = 1; arr.length < 4; i++) {
-      arr.push(currentPage + i <= totalPages && i != 3 ? currentPage + i : 0);
+    for (let i = -1; i < 3; i++) {
+      arr.push(currentPage + i);
     }
   }
 
-  if (arr.length === 1 && totalPages > currentPage) {
-    arr.push(0);
+  if (arr[3] < totalPages) {
+    arr[3] = 0;
+  }
+  if (arr[3] === totalPages && arr[0] != 1) {
+    arr[0] = 0;
   }
 
-  for (let i = arr[0] - 1; i > 0 && arr.length < 4; i--) {
-    arr.unshift(i);
+  for (let i = 0; i < 4; i++) {
+    if (arr[i] > totalPages) {
+      arr[i] = -1;
+    }
   }
 
-  while (arr.length < 4) {
-    arr.push(-1);
-  }
   arr.unshift(currentPage > 1 ? currentPage - 1 : -1);
   arr.unshift(currentPage > 1 ? 1 : -1);
   arr.push(currentPage < totalPages ? currentPage + 1 : -1);
@@ -71,6 +74,8 @@ const addPaginationItemIco = idx => {
 const generatePaginationItem = (idx, page, title, accent, outline) => {
   return `<li class="pagination-item${accent ? ' accent' : ''}${
     outline ? ' outline' : ''
+  }${
+    page === -1 && !outline ? ' hidden-btn' : ''
   }" data-page="${page}">${title}${addPaginationItemIco(idx)}</li>`;
 };
 

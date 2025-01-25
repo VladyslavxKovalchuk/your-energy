@@ -4,6 +4,7 @@ import { generatePaginationEl } from './pagination-utils';
 
 const onParentElClick = (callback, ...callbackParams) => {
   return event => {
+    event.preventDefault();
     const paginationEl = event.currentTarget;
     if (event.target === event.currentTarget) {
       return;
@@ -33,4 +34,9 @@ export const showPagination = (
     'click',
     onParentElClick(callback, callbackParams)
   );
+};
+
+export const hidePagination = parentQuerySelector => {
+  const parentEl = document.querySelector(parentQuerySelector);
+  parentEl.firstChild.remove();
 };
