@@ -19,3 +19,12 @@ export const fetchExerciseById = (id) => {
 export const fetchExercises = (filters) => {
   return axios.get('/exercises', { params:filters });
 };
+
+export const submitRating = (id, rate, email, review) => {
+  const requestBody = {
+    rate,
+    email,
+    review,
+  };
+  return axios.patch(`/exercises/${id}/rating`, requestBody);
+};
