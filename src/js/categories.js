@@ -77,7 +77,9 @@ const onCategoryListElClick = event => {
   console.log(`Execute function for rendering exercises (${filter}; ${name})`);
 };
 
- const findExerciseFilterType = (filter) => {
+const findExerciseFilterType = filter => {
   const lowerCaseFilter = filter.toLowerCase();
-  return Object.values(ExerciseFilterType).find(value => value === lowerCaseFilter);
+  return Object.values(ExerciseFilterType).find(
+    value => value === lowerCaseFilter
+  );
 };

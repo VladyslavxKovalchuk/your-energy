@@ -21,16 +21,20 @@
 
 }
 
+.pagination-item svg {
+    margin: auto;
+}
+
 .pagination-item:hover {
     background-color: var(--black);
     color: var(--white);
 }
 
-.p-active {
+.accent {
     color: var(--black);
 }
 
-.p-round {
+.outline {
     border: 1px solid var(--black);
 }
 
@@ -38,4 +42,20 @@
     .pagination {
         margin-top: 32px;
     }
+}
+
+.pagination .pagination-item:nth-child(1) {
+    margin-right: 4px;
+}
+
+.pagination .pagination-item:nth-child(2) {
+    margin-right: 20px;
+}
+
+.pagination .pagination-item:nth-child(7) {
+    margin-left: 20px;
+}
+
+.pagination .pagination-item:nth-child(8) {
+    margin-left: 4px;
 }
