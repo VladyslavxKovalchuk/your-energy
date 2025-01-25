@@ -38,5 +38,6 @@ export const showPagination = (
 
 export const hidePagination = parentQuerySelector => {
   const parentEl = document.querySelector(parentQuerySelector);
-  parentEl.firstChild.remove();
+  if (parentEl.firstChild)
+    parentEl.firstChild.remove();
 };
