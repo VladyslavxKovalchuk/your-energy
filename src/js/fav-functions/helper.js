@@ -17,7 +17,7 @@ const drawMarkupList = listCards => {
               <div class="card-name-box">
                 <p class="list-card-name">Workout</p>
               </div>
-              <button type="button">
+              <button class="btn-trash" type="button">
               <svg class="icon-trash" width="16px" height="16px">
                 <use href="./img/sprite.svg#trash"></use>
               </svg>
