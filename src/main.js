@@ -10,6 +10,7 @@ import './js/favorites';
 import './js/mobile-menu';
 import './js/header';
 import './js/footer';
+import './js/scroll-up';
 
 showCategories('Muscles', 1)
   .then(pages =>
