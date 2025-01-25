@@ -1,6 +1,7 @@
 'use strict';
 
 import { fetchCategories } from './api.js';
+import { showPagination } from './pagination.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
 import { ShowExercisesByCategory } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
@@ -8,7 +9,7 @@ import ExerciseFilterType from './exerciseFilterType.js';
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
 
-export const createGalleryCards = categoriesArr => {
+export const createPaginationItems = categoriesArr => {
   return categoriesArr.reduce((acc, el) => {
     return (
       acc +
@@ -39,10 +40,17 @@ export const showCategories = async (filter, queriedPage) => {
       return { page, perPage, totalPages };
     }
 
-    categoryListEl.innerHTML = createGalleryCards(results);
+    categoryListEl.innerHTML = createPaginationItems(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
-
+    showPagination(
+      '.pagination-container',
+      queriedPage,
+      totalPages,
+      showCategories,
+      filter,
+      page
+    );
     return { page, perPage, totalPages };
   } catch (err) {
     console.log(err);

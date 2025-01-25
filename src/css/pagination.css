@@ -1,0 +1,41 @@
+.pagination {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-item {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    align-content: center;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.33;
+    letter-spacing: 0.04em;
+    color: var(--grey);
+
+}
+
+.pagination-item:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.p-active {
+    color: var(--black);
+}
+
+.p-round {
+    border: 1px solid var(--black);
+}
+
+@media screen and (min-width: 768px) {
+    .pagination {
+        margin-top: 32px;
+    }
+}
