@@ -8,5 +8,4 @@ export const getResolution = () => {
 };
 
 export const getGategoriesOnPage = () => CATEGORIES_ON_PAGE[getResolution()];
-
 export const getExercisesOnPage = () => EXERCISES_ON_PAGE[getResolution()];
