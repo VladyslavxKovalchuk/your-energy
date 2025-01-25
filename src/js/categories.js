@@ -4,7 +4,7 @@ import { fetchCategories } from './api.js';
 import { showPagination, hidePagination } from './pagination.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
 import { ShowExercisesByCategory, HideExercises } from './exercises.js';
-import ExerciseFilterType from './exerciseFilterType.js';
+import ExerciseFilterType from './exercise.filter-type.js';
 import { renderFilterByCategory } from './filters.js';
 import { showLoader, hideLoader } from './loader.js';
 
