@@ -1,9 +1,43 @@
-import Exercise from "./exercise.Class";
+import Exercise from './exercise.Class';
 
-const modalpage= document.querySelector('.modal-page');
+const getDynamicId = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('exerciseId');
+};
 
-if (modalpage) 
-{
-    Exercise.fetchById("64f389465ae26083f39b17df").then((exercise) => {  modalpage.append(exercise.renderCard()); });
-}
-    
+document.addEventListener('DOMContentLoaded', () => {
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const modalPage = document.querySelector('.modal-page');
+  const body = document.body;
+
+  document.addEventListener('click', event => {
+    if (event.target.closest('.exercise-start-btn')) {
+      const dynamicId =
+        event.target.closest('.exercise-start-btn').dataset.exerciseid ||
+        getDynamicId();
+
+      if (dynamicId) {
+        Exercise.fetchById(dynamicId)
+          .then(exercise => {
+            modalPage.innerHTML = '';
+            modalPage.append(exercise.renderCard());
+            modalOverlay.classList.remove('hidden');
+            modalPage.classList.remove('hidden');
+            body.classList.add('no-scroll');
+          })
+          .catch(error => {
+            console.error('Error fetching exercise:', error);
+          });
+      }
+    }
+
+    if (
+      event.target.classList.contains('modal-overlay') ||
+      event.target.closest('.modal-card-close-button')
+    ) {
+      modalOverlay.classList.add('hidden');
+      modalPage.classList.add('hidden');
+      body.classList.remove('no-scroll');
+    }
+  });
+});

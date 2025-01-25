@@ -2,16 +2,16 @@
 import sprite from '../img/sprite.svg';
 
 const PAGINATION_ICO = {
-  0: sprite + '#trash',
-  1: sprite + '#trash',
-  6: sprite + '#trash',
-  7: sprite + '#trash',
+  0: sprite + '#two-angle-left',
+  1: sprite + '#one-angle-left',
+  6: sprite + '#one-angle-right',
+  7: sprite + '#two-angle-right',
 };
 
 const generateInnerPagesArr = (currentPage, totalPages) => {
   const arr = [];
 
-  if (totalPages - currentPage < 3) {
+  if (totalPages - currentPage <= 3) {
     for (let i = totalPages; i > 0 && arr.length < 4; i--) {
       arr.unshift(i);
     }
@@ -23,6 +23,9 @@ const generateInnerPagesArr = (currentPage, totalPages) => {
 
   if (arr.length === 0) {
     arr.push(currentPage);
+    for (let i = 1; arr.length < 4; i++) {
+      arr.push(currentPage + i <= totalPages && i != 3 ? currentPage + i : 0);
+    }
   }
 
   if (arr.length === 1 && totalPages > currentPage) {
@@ -54,14 +57,13 @@ const generatePaginationItemObjects = (currentPage, totalPages) => {
     el,
     sideBtns.has(idx) ? '' : el === 0 ? '...' : el > 0 ? el : '',
     el === currentPage ||
-      (idx in leftBtns && currentPage != 1) ||
-      (idx in rightBtns && currentPage != totalPages),
+      (leftBtns.has(idx) && currentPage != 1) ||
+      (rightBtns.has(idx) && currentPage != totalPages),
     sideBtns.has(idx) || el === currentPage,
   ]);
 };
 
 const addPaginationItemIco = idx => {
-  console.log(PAGINATION_ICO[idx]);
   return PAGINATION_ICO.hasOwnProperty(idx)
     ? `<svg width="20" height="20"><use href="${PAGINATION_ICO[idx]}"></use></svg>`
     : '';

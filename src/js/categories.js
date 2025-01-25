@@ -2,9 +2,11 @@
 
 import { fetchCategories } from './api.js';
 import { showPagination } from './pagination.js';
-import { getGategoriesOnPage, getResolution } from './utils.js';
+import { getGategoriesOnPage } from './utils.js';
 import { ShowExercisesByCategory } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
+import { renderFilterByCategory } from './filters.js';
+import { showLoader, hideLoader } from './loader.js';
 
 const categoryListEl = document.querySelector('.category-list');
 const categoryContainerEl = document.querySelector('.category-container');
@@ -28,6 +30,7 @@ export const createPaginationItems = categoriesArr => {
 
 export const showCategories = async (filter, queriedPage) => {
   try {
+    showLoader();
     const response = await fetchCategories(
       filter,
       queriedPage,
@@ -54,6 +57,8 @@ export const showCategories = async (filter, queriedPage) => {
     return { page, perPage, totalPages };
   } catch (err) {
     console.log(err);
+  } finally {
+    hideLoader();
   }
 };
 
@@ -65,7 +70,6 @@ export const hideCategories = () => {
 
 const onCategoryListElClick = event => {
   event.preventDefault();
-  console.log(getResolution());
   if (event.target === event.currentTarget) {
     return;
   }
@@ -74,7 +78,7 @@ const onCategoryListElClick = event => {
   const name = targetCard.getAttribute('data-name');
   hideCategories();
   ShowExercisesByCategory(findExerciseFilterType(filter), name);
-  console.log(`Execute function for rendering exercises (${filter}; ${name})`);
+  renderFilterByCategory(filter, name);
 };
 
 const findExerciseFilterType = filter => {

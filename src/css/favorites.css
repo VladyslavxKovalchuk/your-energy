@@ -341,3 +341,7 @@
     text-align: unset;
   }
 }
+
+.is-visible {
+  display: none;
+}
