@@ -1,0 +1,26 @@
+name: Check Page Speed Insights
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to check'
+        required: true
+        default: 'https://valeriabokotejova.github.io/your-energy'
+      threshold:
+        description: 'Threshold score'
+        required: true
+        default: 90
+
+jobs:
+  run_psi:
+    runs-on: ubuntu-latest
+    name: Running Page Speed Insights
+    steps:
+      - name: Running Page Speed Insights
+        uses: ./ # Uses an action in the root directory
+        id: psi
+        with:
+          url: ${{ github.event.inputs.url }}
+          threshold: ${{ github.event.inputs.threshold }}
+          strategy: mobile
