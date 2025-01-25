@@ -28,6 +28,10 @@
     overflow: hidden;
 }
 
+.category-card:hover {
+    cursor: pointer;
+}
+
 .category-card::after {
     content: '';
     position: absolute;

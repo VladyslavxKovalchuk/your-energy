@@ -10,6 +10,10 @@
 }
 .exercise-container {
   width: 100%;
+  display: none;
+}
+.exercise-container.active {
+  display: block;
 }
 
 .exercise-list {
@@ -63,10 +67,8 @@
   line-height: 18px;
 }
 
-.exercise-header .trash-container {
-  display: flex;
-  align-items: center;
-  margin-left: 8px;
+.exercise-header .rating.hidden {
+  display: none;
 }
 
 .exercise-header .rating svg {
@@ -78,6 +80,9 @@
   align-items: center;
   border: none;
   fill: white;
+}
+.exercise-card-trash.hidden {
+  display: none;
 }
 
 .exercise-start-btn {

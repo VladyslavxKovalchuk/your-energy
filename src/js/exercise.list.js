@@ -1,5 +1,5 @@
 import { fetchExercises } from './api.js';
-import Exercise from './exercise.Class.js';
+import Exercise from './exercise.js';
 
 class ExerciseList {
   constructor() {

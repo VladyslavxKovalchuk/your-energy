@@ -36,6 +36,13 @@
   position: relative;
 }
 
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-page.hidden {
+  display: none;
+}
 .modal-card-close-button {
   position: absolute;
   top: 7px;
