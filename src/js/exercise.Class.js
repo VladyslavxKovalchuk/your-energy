@@ -1,5 +1,6 @@
 import { fetchExerciseById } from './api.js';
 import sprite from '../img/sprite.svg';
+import { createRating } from './createRating.js';
 
 class Exercise {
   constructor(
@@ -65,12 +66,16 @@ class Exercise {
               <use href="${sprite}#star-active"></use>
             </svg>
           </div>
-          <button type="button" data-exerciseid="${this.id}" class="exercise-card-trash ${!trashVisible ? 'hidden' : ''}">
+          <button type="button" data-exerciseid="${
+            this.id
+          }" class="exercise-card-trash ${!trashVisible ? 'hidden' : ''}">
             <svg width="16" height="16">
               <use href="${sprite}#trash"></use>
             </svg>
           </button>
-          <button type="button" data-exerciseid="${this.id}" class="exercise-start-btn">
+          <button type="button" data-exerciseid="${
+            this.id
+          }" class="exercise-start-btn">
             Start
             <svg width="16" height="16">
               <use href="${sprite}#arrow"></use>
@@ -108,7 +113,7 @@ class Exercise {
       { name: 'Body Part', value: this.bodyPart },
       { name: 'Equipment', value: this.equipment },
       { name: 'Popular', value: this.popularity },
-      { name: 'Burned Calories', value: this.burnedCalories }
+      { name: 'Burned Calories', value: this.burnedCalories },
     ];
 
     const propertiesHTML = properties
@@ -122,7 +127,6 @@ class Exercise {
         </div>`
       )
       .join('');
-
 
     card.innerHTML = `
       <button type="button" class="modal-card-close-button">
@@ -140,7 +144,7 @@ class Exercise {
       <h3 class="modal-card-title">${this.name}</h3>
       <div class="modal-card-rating">
         <span class="rating-value">${this.formatRating()}</span>
-       ${this.getStarRatingHTML()}            
+       ${createRating(this.rating, sprite)}            
       </div>
       <hr class="divider" />
       <div class="modal-card-properties">
@@ -149,13 +153,17 @@ class Exercise {
       <hr class="divider" />
       <p class="modal-card-description">${this.description}</p>
       <div class="modal-card-buttons">
-        <button type="button" data-exerciseid="${this.id}" class="modal-card-button favorite-button">
+        <button type="button" data-exerciseid="${
+          this.id
+        }" class="modal-card-button favorite-button">
         <span>Add to favorites</span>
         <svg width="18" height="18">
             <use href="${sprite}#heart"></use>
           </svg>
         </button>
-        <button type="button" data-exerciseid="${this.id}"class="modal-card-button rating-button">Give a rating</button>
+        <button type="button" data-exerciseid="${
+          this.id
+        }"class="modal-card-button rating-button">Give a rating</button>
       </div>
       </div>
       </div>
@@ -168,8 +176,10 @@ class Exercise {
   }
   getStarRatingHTML() {
     let starsHtml = '';
-    const activestar= '<svg width="18" height="18"><use href="${sprite}#star-active"></use></svg>';
-    const inactivestar= '<svg width="18" height="18"><use href="${sprite}#star-inactive"></use></svg>';
+    const activestar =
+      '<svg width="18" height="18"><use href="${sprite}#star-active"></use></svg>';
+    const inactivestar =
+      '<svg width="18" height="18"><use href="${sprite}#star-inactive"></use></svg>';
     starsHtml += activestar.repeat(this.rating.toFixed(0));
     starsHtml += inactivestar.repeat(5 - this.rating.toFixed(0));
     return starsHtml;
