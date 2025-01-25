@@ -5,6 +5,7 @@
 @media screen and (min-width: 1440px) {
   .exercises-container {
     flex-direction: row-reverse;
+    gap: 32px;
   }
 }
 .exercise-container {
