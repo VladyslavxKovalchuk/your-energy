@@ -76,8 +76,13 @@
   color: rgb(244, 244, 244);
 }
 
+.modal-card-title::first-letter {
+  text-transform: uppercase;
+}
+
 .modal-card-rating {
   display: flex;
+  align-items: center;
   gap: 2px;
   margin: 10px 0px;
 }
@@ -112,6 +117,10 @@
   font-weight: 500;
   line-height: 18px;
   color: #f4f4f4;
+}
+
+.modal-card-property-value::first-letter {
+  text-transform: uppercase;
 }
 
 .modal-card-property-name {
