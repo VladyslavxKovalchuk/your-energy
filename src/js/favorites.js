@@ -2,7 +2,7 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
 import { drawMarkupList, fetchCardByID } from './fav-functions/helper';
-import getAllIdFromLocalStorage from './js/localStorage';
+// import getAllIdFromLocalStorage from './js/localStorage';
 
 const list = document.querySelector('.fav-list-card');
 const textDefault = document.querySelector('.fav-text-default');
@@ -25,7 +25,8 @@ ulEl.addEventListener('click', e => {
 });
 
 const readFromLS = async () => {
-  listId = getAllIdFromLocalStorage();
+  // listId = getAllIdFromLocalStorage();
+  listID = JSON.parse(locale.storage("keyID"));
 
   if (listId === null) {
     listId = [];
