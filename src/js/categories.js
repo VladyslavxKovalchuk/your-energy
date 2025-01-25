@@ -19,7 +19,10 @@ export const createCategoriesItems = categoriesArr => {
       <img class="gallery-image"
            src="${el.imgURL}"
            alt="${el.name}"
-           loading="lazy"/>
+           loading="lazy"
+           width="335"
+           height="225"
+           />
             <div class="category-title">
               <h3>${el.name}</h3>
               <p>${el.filter}</p>
