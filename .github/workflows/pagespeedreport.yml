@@ -33,23 +33,31 @@ jobs:
         run: |
           generate_report() {
             local strategy=$1
-            local id=$2
+            local score=$2
+            local fcp=$3
+            local fid=$4
+            local cls=$5
+            local lcp=$6
+            local si=$7
+            local tti=$8
+            local tbt=$9
+
             echo "### Performance ${strategy^}" >> report.md
             echo "" >> report.md
             echo "| Metric                        | Value                                       | Unit             | Maximum Value |" >> report.md
             echo "| ----------------------------- | ------------------------------------------- | ----------------- | ------------- |" >> report.md
-            echo "| **Score**                     | ${{ steps.${id}.outputs.score }}            | Overall score     | 100           |" >> report.md
-            echo "| **First Contentful Paint**    | ${{ steps.${id}.outputs.first-contentful-paint }} ms | milliseconds      | -             |" >> report.md
-            echo "| **First Input Delay**         | ${{ steps.${id}.outputs.first-input-delay }} ms | milliseconds      | -             |" >> report.md
-            echo "| **Cumulative Layout Shift**   | ${{ steps.${id}.outputs.cumulative-layout-shift }} | Score             | -             |" >> report.md
-            echo "| **Largest Contentful Paint**  | ${{ steps.${id}.outputs.largest-contentful-paint }} ms | milliseconds      | -             |" >> report.md
-            echo "| **Speed Index**               | ${{ steps.${id}.outputs.speed-index }}      | Speed Index score | 100           |" >> report.md
-            echo "| **Time to Interactive**       | ${{ steps.${id}.outputs.time-to-interactive }} ms | Time to Interactive score | 100           |" >> report.md
-            echo "| **Total Blocking Time**       | ${{ steps.${id}.outputs.total-blocking-time }} ms | Total Blocking Time score | 100           |" >> report.md
+            echo "| **Score**                     | ${score}                                    | Overall score     | 100           |" >> report.md
+            echo "| **First Contentful Paint**    | ${fcp} ms                                   | milliseconds      | -             |" >> report.md
+            echo "| **First Input Delay**         | ${fid} ms                                   | milliseconds      | -             |" >> report.md
+            echo "| **Cumulative Layout Shift**   | ${cls}                                      | Score             | -             |" >> report.md
+            echo "| **Largest Contentful Paint**  | ${lcp} ms                                   | milliseconds      | -             |" >> report.md
+            echo "| **Speed Index**               | ${si}                                       | Speed Index score | 100           |" >> report.md
+            echo "| **Time to Interactive**       | ${tti} ms                                   | Time to Interactive score | 100           |" >> report.md
+            echo "| **Total Blocking Time**       | ${tbt} ms                                   | Total Blocking Time score | 100           |" >> report.md
           }
 
-          generate_report "mobile" "psi_mobile"
-          generate_report "desktop" "psi_desktop"
+          generate_report "mobile" "${{ steps.psi_mobile.outputs.score }}" "${{ steps.psi_mobile.outputs.first-contentful-paint }}" "${{ steps.psi_mobile.outputs.first-input-delay }}" "${{ steps.psi_mobile.outputs.cumulative-layout-shift }}" "${{ steps.psi_mobile.outputs.largest-contentful-paint }}" "${{ steps.psi_mobile.outputs.speed-index }}" "${{ steps.psi_mobile.outputs.time-to-interactive }}" "${{ steps.psi_mobile.outputs.total-blocking-time }}"
+          generate_report "desktop" "${{ steps.psi_desktop.outputs.score }}" "${{ steps.psi_desktop.outputs.first-contentful-paint }}" "${{ steps.psi_desktop.outputs.first-input-delay }}" "${{ steps.psi_desktop.outputs.cumulative-layout-shift }}" "${{ steps.psi_desktop.outputs.largest-contentful-paint }}" "${{ steps.psi_desktop.outputs.speed-index }}" "${{ steps.psi_desktop.outputs.time-to-interactive }}" "${{ steps.psi_desktop.outputs.total-blocking-time }}"
 
       - name: Publish to Wiki
         uses: peaceiris/actions-gh-pages@v3
