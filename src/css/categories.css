@@ -3,7 +3,7 @@
     display: none;
 }
 
-.container.active {
+.category-container.active {
     display: block;
 }
 
