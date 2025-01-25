@@ -137,7 +137,10 @@ class Exercise {
       <div class="modal-card-header">
       
       <div class="image-container">
-        <img src="${this.gifUrl}" alt="${this.name}" />
+        <img 
+          src="${this.gifUrl}"
+          alt="${this.name}"
+          loading="lazy" />
       </div>
       <div class="modal-card-data">
 
