@@ -2,7 +2,7 @@
 
 import { fetchCategories } from './api.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
-import { ShowExercisesByCategory } from './exercises.js';
+import { ShowExercisesByCategory,HideExercises } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
 import { renderFilterByCategory } from './filters.js';
 import { showLoader, hideLoader } from './loader.js';
@@ -46,6 +46,7 @@ export const showCategories = async (filter, queriedPage) => {
     categoryListEl.innerHTML = createGalleryCards(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
+    HideExercises();
 
     return { page, perPage, totalPages };
   } catch (err) {
