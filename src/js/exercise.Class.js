@@ -1,6 +1,8 @@
 import { fetchExerciseById } from './api.js';
 import sprite from '../img/sprite.svg';
+import noImage from '../img/no-image.jpg';
 import { createRating } from './createRating.js';
+import { showLoader, hideLoader } from './loader.js';
 
 class Exercise {
   constructor(
@@ -36,21 +38,29 @@ class Exercise {
   }
 
   static async fetchById(id) {
-    const response = await fetchExerciseById(id);
-    const data = response.data;
-    return new Exercise(
-      data._id,
-      data.bodyPart,
-      data.equipment,
-      data.gifUrl,
-      data.name,
-      data.target,
-      data.description,
-      data.rating,
-      data.burnedCalories,
-      data.time,
-      data.popularity
-    );
+    try {
+      showLoader();
+      const response = await fetchExerciseById(id);
+      const data = response.data;
+      return new Exercise(
+        data._id,
+        data.bodyPart,
+        data.equipment,
+        data.gifUrl,
+        data.name,
+        data.target,
+        data.description,
+        data.rating,
+        data.burnedCalories,
+        data.time,
+        data.popularity
+      );
+    } catch (error) {
+      console.error('Error fetching exercise:', error);
+      throw error;
+    } finally {
+      hideLoader();
+    }
   }
 
   render(ratingVisible = true, trashVisible = false) {
@@ -137,7 +147,9 @@ class Exercise {
       <div class="modal-card-header">
       
       <div class="image-container">
-        <img src="${this.gifUrl}" alt="${this.name}" />
+        <img src="${this.gifUrl}" alt="${
+      this.name
+    }" onerror="this.src='${noImage}'" />
       </div>
       <div class="modal-card-data">
 
