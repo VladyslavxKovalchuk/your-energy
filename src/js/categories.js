@@ -37,7 +37,7 @@ export const showCategories = async (filter, queriedPage) => {
       queriedPage,
       getGategoriesOnPage()
     );
-    const { page, perPage, totalPages, results } = response.data;
+    const { page, totalPages, results } = response.data;
 
     if (results.length === 0) {
       categoryListEl.innerHTML = '';
