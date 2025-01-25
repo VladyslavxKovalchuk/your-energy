@@ -88,8 +88,6 @@ export function renderFilterByCategory(filter, category) {
   updateParams(filter, category);
   updateTitle(category);
   searchForm.style.display = 'block';
-  // call function in exircises carts
-  console.log(`filterName: ${filterName}  categoryName: ${categoryName}`);
 }
 
 function updateParams(filter, category) {
