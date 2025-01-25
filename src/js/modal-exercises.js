@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ) {
       modalOverlay.classList.add('hidden');
       modalPage.classList.add('hidden');
+      modalPage.innerHTML = '';
       body.classList.remove('no-scroll');
     }
   });

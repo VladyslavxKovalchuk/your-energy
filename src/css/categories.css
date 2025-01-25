@@ -3,7 +3,7 @@
     display: none;
 }
 
-.container.active {
+.category-container.active {
     display: block;
 }
 
@@ -98,6 +98,12 @@
     .category-title h3 {
         font-size: 24px;
     }
+
+    .category-card img {
+        max-width: auto;
+        height: 100%;
+    }
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -116,6 +122,11 @@
 
     .category-title {
         gap: 4px;
+    }
+
+    .category-card img {
+        max-width: 100%;
+        height: auto;
     }
 
 }
