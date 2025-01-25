@@ -14,6 +14,14 @@ const arrayID = [
   '64f389465ae26083f39b17a3',
   '64f389465ae26083f39b17a7',
   '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
+  '64f389465ae26083f39b17a7',
+  '64f389465ae26083f39b17a3',
 ];
 let markupCards = '';
 let getData = [];
@@ -44,3 +52,7 @@ const readFromLS = async () => {
     }
   }
 };
+
+localStorage.setItem('keyID', JSON.stringify(arrayID));
+
+readFromLS();
