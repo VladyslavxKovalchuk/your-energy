@@ -1,3 +1,84 @@
 div {
-    display: block;
+  display: block;
+}
+
+.rating-modal-card {
+  width: 335px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--black);
+  position: relative;
+}
+
+.rating-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rating-modal h2 {
+  color: #f4f4f466;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.rating-modal__mark {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 32px;
+}
+
+.rating-modal__value {
+  color: var(--light);
+}
+
+.rating-modal__stars {
+  display: flex;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.rating-modal__stars svg {
+  vertical-align: middle;
+}
+
+.rating-modal__email {
+  margin-bottom: 16px;
+  line-height: 1.15;
+  border: 1px solid var(--light);
+  padding: 12px 14px;
+  background: transparent;
+  border-radius: 30px;
+  cursor: revert;
+  color: var(--light);
+  width: 100%;
+}
+
+.rating-modal__comment {
+  border: 1px solid var(--light);
+  min-height: 106px;
+  border-radius: 15px;
+  background: transparent;
+  padding: 12px 14px;
+  margin-bottom: 32px;
+  width: 100%;
+  color: var(--light)
+}
+
+.rating-modal__submit-btn{
+  line-height: 1.15;
+  padding: 12px 14px;
+  background-color: var(--light);
+  color: var(--black);
+  border-radius: 30px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .rating-modal-card {
+    width: 430px;
+    padding: 40px;
+  }
 }
