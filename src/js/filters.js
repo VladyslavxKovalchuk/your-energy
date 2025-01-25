@@ -1,6 +1,6 @@
 import { showCategories } from './categories.js';
 import { ShowExercisesByCategory} from './exercises.js'
-import ExerciseFilterType from './exercisefiltertype.js';
+import ExerciseFilterType from './exercise.filtertype.js';
 
 const filterTabs = document.querySelectorAll('.filter-tab-button');
 const searchForm = document.querySelector('.filter-form-container');
