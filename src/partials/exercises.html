@@ -9,14 +9,17 @@
       <div class="filter-form-container" style="display: none">
         <form class="filter-search-form">
           <div class="search-container">
+            <label for="search-input" class="visually-hidden">Search Exercises</label>
             <input
               type="text"
+              id="search-input"
               class="search-string"
               autofocus
               placeholder="Search"
+              aria-label="Search Exercises"
             />
-            <button type="submit" class="search-button">
-              <svg class="icon" width="18" height="18">
+            <button type="submit" class="search-button" aria-label="Submit Search">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
                 <use href="./img/sprite.svg#search"></use>
               </svg>
             </button>
@@ -24,8 +27,9 @@
               type="reset"
               class="cansel-search-button"
               style="display: none"
+              aria-label="Cancel Search"
             >
-              <svg class="icon" width="8" height="8">
+              <svg class="icon" width="8" height="8" aria-hidden="true">
                 <use href="./img/sprite.svg#search-cansel"></use>
               </svg>
             </button>
@@ -54,6 +58,7 @@
   <div class="container exercises-container">
     <div class="category-container active">
       <ul class="category-list"></ul>
+      <div class="container pagination-container active"></div>
     </div>
     <div class="exercise-container hidden">
       <div class="exercise-list"></div>
@@ -113,5 +118,4 @@
   <div class="loader-container">
     <span class="loader hidden"></span>
   </div>
-  <div class="container pagination-container active"></div>
 </section>

@@ -18,7 +18,8 @@ export const createPaginationItems = categoriesArr => {
       `<li class="category-card" data-name="${el.name}" data-filter="${el.filter}">
       <img class="gallery-image"
            src="${el.imgURL}"
-           alt="${el.name}"/>
+           alt="${el.name}"
+           loading="lazy"/>
             <div class="category-title">
               <h3>${el.name}</h3>
               <p>${el.filter}</p>
