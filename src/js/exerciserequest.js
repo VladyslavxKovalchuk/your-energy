@@ -1,4 +1,4 @@
-import ExerciseFilterType from './exerciseFilterType.js';
+import ExerciseFilterType from './exercisefiltertype.js';
 class ExerciseRequest {
   constructor({
     bodypart,

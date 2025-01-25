@@ -1,4 +1,4 @@
-import Exercise from './exercise.Class';
+import Exercise from './exercise.js';
 
 const getDynamicId = () => {
   const urlParams = new URLSearchParams(window.location.search);

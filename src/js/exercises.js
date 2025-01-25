@@ -1,5 +1,5 @@
-import ExerciseList from './exerciseList.Class.js';
-import ExerciseRequest from './exerciseRequest.Class.js';
+import ExerciseList from './exerciselist.js';
+import ExerciseRequest from './exerciserequest.js';
 import { showLoader, hideLoader } from './loader.js';
 
 const exerciseContainer = document.querySelector('.exercise-container');
