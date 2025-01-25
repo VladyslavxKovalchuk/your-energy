@@ -2,8 +2,6 @@
 
 import { fetchCategories } from './api.js';
 import { showPagination } from './pagination.js';
-import { getGategoriesOnPage } from './utils.js';
-import { ShowExercisesByCategory } from './exercises.js';
 import { getGategoriesOnPage, getResolution } from './utils.js';
 import { ShowExercisesByCategory,HideExercises } from './exercises.js';
 import ExerciseFilterType from './exerciseFilterType.js';
