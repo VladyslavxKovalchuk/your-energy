@@ -5,6 +5,7 @@ import ExerciseFilterType from './exerciseFilterType.js';
 const filterTabs = document.querySelectorAll('.filter-tab-button');
 const searchForm = document.querySelector('.filter-form-container');
 const searchButton = document.querySelector('.search-button');
+const canselSearchButton = document.querySelector('.cansel-search-button');
 const searchStringElement = document.querySelector('.search-string')
 const additionalTextElement = document.querySelector('.additional-title-filter');
 const slashElement = document.querySelector('.slash-in-filter');
@@ -16,6 +17,21 @@ const categoryMap = {
     'button-muscles': 'Muscles',
     'button-bodypart': 'Body parts',
     'button-equipment': 'Equipment'
+}
+
+filterTabs[0].classList.add('active');
+
+if (searchStringElement) {
+    searchStringElement.addEventListener('input', function() {
+        canselSearchButton.style.display = this.value.length > 0 ? 'block' : 'none';
+    });
+}
+
+if (canselSearchButton) {
+    canselSearchButton.addEventListener('click', function() {
+        searchStringElement.value = '';
+        this.style.display = 'none';
+    });
 }
 
 filterTabs.forEach(tab => {
