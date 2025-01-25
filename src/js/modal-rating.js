@@ -1,11 +1,24 @@
 import sprite from '../img/sprite.svg';
 import { submitRating } from './api.js';
 import iziToast from 'izitoast';
+import { addIdToLocalStorage, removeIdFromLocalStorage, isIdPresentInLocalStorage } from './localStorage.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const modalPage = document.querySelector('.modal-page');
 
   document.addEventListener('click', event => {
+    const favoriteButton = modalPage.querySelector('.favorite-button')
+    if(favoriteButton) {
+      if (event.target === favoriteButton 
+        || favoriteButton.contains(event.target)) {
+          const exerciseId = favoriteButton.getAttribute('data-exerciseid');
+          if(exerciseId) {
+            isIdPresentInLocalStorage(exerciseId) ? removeIdFromLocalStorage(exerciseId) : addIdToLocalStorage(exerciseId)
+
+          }
+        }
+      }
+
     if (!event.target.matches('.rating-button')) return;
 
     const exerciseid = event.target.dataset.exerciseid;
@@ -59,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+
+
 
 function toggleModalVisibility(modal, isVisible) {
   modal.style.display = isVisible ? 'block' : 'none';
