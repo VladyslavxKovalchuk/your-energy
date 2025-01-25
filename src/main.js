@@ -10,3 +10,4 @@ import './js/favorites';
 import './js/mobile-menu';
 import './js/header';
 import './js/footer';
+import './js/localStorage';
