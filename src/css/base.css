@@ -1,6 +1,5 @@
 /* #region variables */
 :root {
-  
   /* colors */
   --black: #242424;
   --light: #f4f4f4;
@@ -61,14 +60,22 @@ li {
 
 /* #region common */
 .section--hero {
+  padding-top: 56px;
   padding-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
   .section--hero {
+    padding-top: 76px;
     padding-bottom: 64px;
   }
 }
+@media screen and (min-width: 1440px) {
+  .section--hero {
+    padding-top: 68px;
+  }
+}
+
 .section--exercises {
   padding-bottom: 80px;
 }
@@ -79,12 +86,12 @@ li {
 }
 @media screen and (min-width: 1440px) {
   .section {
+    padding-top: 68px;
     padding-bottom: 132px;
   }
 }
 
 .container {
-  width: 100%;
   padding: 0 16px;
   margin: 0 auto;
 }
