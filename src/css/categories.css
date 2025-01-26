@@ -12,18 +12,16 @@
     flex-wrap: wrap;
     column-gap: 15px;
     gap: 20px;
-    width: 335px;
-    margin: auto;
+    
 }
 
 .category-card {
     display: flex;
     color: var(--light);
-    width: 335px;
-    height: 225px;
+    width: 100%;
+    min-height: 225px;
     border-radius: 12px;
     padding: 48px;
-    box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
