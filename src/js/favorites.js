@@ -2,37 +2,49 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
 import { drawMarkupList, fetchCardByID } from './fav-functions/helper';
-// import getAllIdFromLocalStorage from './js/localStorage';
+import {
+  getAllIdFromLocalStorage,
+  removeIdFromLocalStorage,
+} from './localStorage';
 
 const list = document.querySelector('.fav-list-card');
 const textDefault = document.querySelector('.fav-text-default');
-const ulEl = document.querySelector('.fav-list-card');
+
 let markupCards = '';
 let getData = [];
 let listId = [];
 
-ulEl.addEventListener('click', e => {
-  if (e.target.nodeName === 'use') {
-    const idCard =
-      e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
-        .dataset.id;
-    const newArray = getData.filter(obj => obj._id !== idCard);
-    const newIDList = newArray.filter(obj => obj._id);
-    const filtrMArkup = drawMarkupList(newArray);
-    list.innerHTML = filtrMArkup;
-    localStorage.setItem('keyID', JSON.stringify(newIDList));
-  }
-});
+if (window.location.pathname === '/favorites.html') {
+  list.addEventListener('click', e => {
+    if (e.target.nodeName === 'use') {
+      const idCard =
+        e.target.parentNode.parentNode.parentNode.parentNode.parentNode
+          .parentNode.dataset.id;
+      const answer = removeIdFromLocalStorage(idCard);
+
+      if (answer) {
+        iziToast.success({
+          title: 'OK',
+          message: `${idCard} is deleting.`,
+          position: 'topRight',
+        });
+      } else {
+        iziToast.error({
+          title: 'Error',
+          message: `${idCard} is not deleting`,
+          position: 'topRight',
+        });
+      }
+      readFromLS();
+    }
+  });
+}
 
 const readFromLS = async () => {
-  // listId = getAllIdFromLocalStorage();
-  listID = JSON.parse(locale.storage("keyID"));
-
-  if (listId === null) {
-    listId = [];
-  }
+  listId = getAllIdFromLocalStorage();
 
   if (listId.length === 0) {
+    list.innerHTML = '';
     if (textDefault.classList.contains('is-visible')) {
       textDefault.classList.remove('is-visible');
     }
@@ -42,10 +54,11 @@ const readFromLS = async () => {
       const promise = await Promise.all(listId.map(id => fetchCardByID(id)));
       getData = promise.map(obj => obj.data);
       markupCards = drawMarkupList(getData);
-      if (list) {
+      if (!textDefault.classList.contains('is-visible')) {
         textDefault.classList.add('is-visible');
-        list.insertAdjacentHTML('beforeend', markupCards);
       }
+      list.innerHTML = '';
+      list.insertAdjacentHTML('beforeend', markupCards);
     } catch (error) {
       iziToast.error({
         title: 'Error',
