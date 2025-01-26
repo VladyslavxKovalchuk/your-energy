@@ -91,5 +91,5 @@ const findExerciseFilterType = filter => {
     value => value === lowerCaseFilter
   );
 };
-
-showCategories('Muscles', 1);
+if (categoryContainerEl)
+  showCategories('Muscles', 1);
