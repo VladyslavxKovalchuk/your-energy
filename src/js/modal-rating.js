@@ -13,7 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
         || favoriteButton.contains(event.target)) {
           const exerciseId = favoriteButton.getAttribute('data-exerciseid');
           if(exerciseId) {
-            isIdPresentInLocalStorage(exerciseId) ? removeIdFromLocalStorage(exerciseId) : addIdToLocalStorage(exerciseId)
+            if (isIdPresentInLocalStorage(exerciseId)) {
+              removeIdFromLocalStorage(exerciseId)
+              favoriteButton.querySelector('span').textContent = 'Add to favorites'
+              favoriteButton.querySelector('use').setAttribute('fill', 'none')
+            } else {
+              addIdToLocalStorage(exerciseId)
+              favoriteButton.querySelector('span').textContent = 'Remove favorite'
+              favoriteButton.querySelector('use').setAttribute('fill', 'black')
+            }
 
           }
         }
