@@ -68,5 +68,5 @@ const readFromLS = async () => {
     }
   }
 };
-
-readFromLS();
+if (list) 
+  readFromLS();
