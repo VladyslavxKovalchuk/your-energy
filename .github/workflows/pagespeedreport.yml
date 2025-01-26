@@ -12,9 +12,6 @@ jobs:
   performanceChecker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Run PageSpeed Insights (Mobile)
         id: psi_mobile
         uses: stefafafan/psi-action@v1
@@ -22,49 +19,43 @@ jobs:
           url: ${{ github.event.inputs.url }}
           strategy: 'mobile'
           
+      - name: Echo results mobile
+        run: |
+          {
+            echo "### Performance Mobile"
+            echo ""
+            echo "| Metric                        | Value                                       | Unit             | Maximum Value |"
+            echo "| ----------------------------- | ------------------------------------------- | ----------------- | ------------- |"
+            echo "| **Score**                     | ${{ steps.psi_mobile.outputs.score }}              | Overall score     | 100           |"
+            echo "| **First Contentful Paint**    | ${{ steps.psi_mobile.outputs.first-contentful-paint }}              | milliseconds      | -             |"
+            echo "| **First Input Delay**         | ${{ steps.psi_mobile.outputs.first-input-delay }}              | milliseconds      | -             |"
+            echo "| **Cumulative Layout Shift**   | ${{ steps.psi_mobile.outputs.cumulative-layout-shift }}              | Score             | -             |"
+            echo "| **Largest Contentful Paint**  | ${{ steps.psi_mobile.outputs.largest-contentful-paint }}              | milliseconds      | -             |"
+            echo "| **Speed Index**               | ${{ steps.psi_mobile.outputs.speed-index }}              | Speed Index score | 100           |"
+            echo "| **Time to Interactive**       | ${{ steps.psi_mobile.outputs.time-to-interactive }}              | Time to Interactive score | 100           |"
+            echo "| **Total Blocking Time**       | ${{ steps.psi_mobile.outputs.total-blocking-time }}              | Total Blocking Time score | 100           |"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
       - name: Run PageSpeed Insights (Desktop)
         id: psi_desktop
         uses: stefafafan/psi-action@v1
         with:
           url: ${{ github.event.inputs.url }}
-          strategy: 'desktop'
-
-      - name: Generate Report
+          strategy: mobile
+          
+      - name: Echo results desktop
         run: |
-          generate_report() {
-            local strategy=$1
-            local score=$2
-            local fcp=$3
-            local fid=$4
-            local cls=$5
-            local lcp=$6
-            local si=$7
-            local tti=$8
-            local tbt=$9
-
-            echo "### Performance ${strategy^}" >> report.md
-            echo "" >> report.md
-            echo "| Metric                        | Value                                       | Unit             | Maximum Value |" >> report.md
-            echo "| ----------------------------- | ------------------------------------------- | ----------------- | ------------- |" >> report.md
-            echo "| **Score**                     | ${score}                                    | Overall score     | 100           |" >> report.md
-            echo "| **First Contentful Paint**    | ${fcp} ms                                   | milliseconds      | -             |" >> report.md
-            echo "| **First Input Delay**         | ${fid} ms                                   | milliseconds      | -             |" >> report.md
-            echo "| **Cumulative Layout Shift**   | ${cls}                                      | Score             | -             |" >> report.md
-            echo "| **Largest Contentful Paint**  | ${lcp} ms                                   | milliseconds      | -             |" >> report.md
-            echo "| **Speed Index**               | ${si}                                       | Speed Index score | 100           |" >> report.md
-            echo "| **Time to Interactive**       | ${tti} ms                                   | Time to Interactive score | 100           |" >> report.md
-            echo "| **Total Blocking Time**       | ${tbt} ms                                   | Total Blocking Time score | 100           |" >> report.md
-          }
-
-          generate_report "mobile" "${{ steps.psi_mobile.outputs.score }}" "${{ steps.psi_mobile.outputs.first-contentful-paint }}" "${{ steps.psi_mobile.outputs.first-input-delay }}" "${{ steps.psi_mobile.outputs.cumulative-layout-shift }}" "${{ steps.psi_mobile.outputs.largest-contentful-paint }}" "${{ steps.psi_mobile.outputs.speed-index }}" "${{ steps.psi_mobile.outputs.time-to-interactive }}" "${{ steps.psi_mobile.outputs.total-blocking-time }}"
-          generate_report "desktop" "${{ steps.psi_desktop.outputs.score }}" "${{ steps.psi_desktop.outputs.first-contentful-paint }}" "${{ steps.psi_desktop.outputs.first-input-delay }}" "${{ steps.psi_desktop.outputs.cumulative-layout-shift }}" "${{ steps.psi_desktop.outputs.largest-contentful-paint }}" "${{ steps.psi_desktop.outputs.speed-index }}" "${{ steps.psi_desktop.outputs.time-to-interactive }}" "${{ steps.psi_desktop.outputs.total-blocking-time }}"
-
-      - name: Commit and Push Report
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add report.md
-          git commit -m "Update PageSpeed Insights report"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          {
+            echo "### Performance Desktop"
+            echo ""
+            echo "| Metric                        | Value                                       | Unit             | Maximum Value |"
+            echo "| ----------------------------- | ------------------------------------------- | ----------------- | ------------- |"
+            echo "| **Score**                     | ${{ steps.psi_desktop.outputs.score }}              | Overall score     | 100           |"
+            echo "| **First Contentful Paint**    | ${{ steps.psi_desktop.outputs.first-contentful-paint }}              | milliseconds      | -             |"
+            echo "| **First Input Delay**         | ${{ steps.psi_desktop.outputs.first-input-delay }}              | milliseconds      | -             |"
+            echo "| **Cumulative Layout Shift**   | ${{ steps.psi_desktop.outputs.cumulative-layout-shift }}              | Score             | -             |"
+            echo "| **Largest Contentful Paint**  | ${{ steps.psi_desktop.outputs.largest-contentful-paint }}              | milliseconds      | -             |"
+            echo "| **Speed Index**               | ${{ steps.psi_desktop.outputs.speed-index }}              | Speed Index score | 100           |"
+            echo "| **Time to Interactive**       | ${{ steps.psi_desktop.outputs.time-to-interactive }}              | Time to Interactive score | 100           |"
+            echo "| **Total Blocking Time**       | ${{ steps.psi_desktop.outputs.total-blocking-time }}              | Total Blocking Time score | 100           |"
+          } >> "${GITHUB_STEP_SUMMARY}"
