@@ -19,7 +19,7 @@ jobs:
           npm run build
       
       - name: Validate HTML
-        uses: jakejarvis/html-proofer-action@v0.1.0
+        uses: chabad360/htmlproofer@v2
         with:
           directory: 'dist'
           check_html: true
