@@ -49,6 +49,7 @@ export const showCategories = async (filter, queriedPage) => {
     categoryListEl.innerHTML = createCategoriesItems(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
+    HideExercises();
     showPagination(
       '.pagination-container',
       queriedPage,
@@ -57,7 +58,6 @@ export const showCategories = async (filter, queriedPage) => {
       filter,
       page
     );
-    HideExercises();
   } catch (err) {
     console.log(err);
   } finally {
