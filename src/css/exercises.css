@@ -12,7 +12,6 @@
 .exercise-container {
   width: 100%;
   display: none;
-  min-height: 500px;
 }
 .exercise-container.active {
   display: block;
