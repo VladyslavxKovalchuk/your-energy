@@ -9,17 +9,18 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get fit and stay healthy with personalized workouts." />
     <title>Your Energy</title>
     <script type="module" crossorigin src="/your-energy/assets/vendor-Cbhu4xvy.js"></script>
-    <script type="module" crossorigin src="/your-energy/assets/main-BEXj5-cW.js"></script>
+    <script type="module" crossorigin src="/your-energy/assets/main-DmFRJUOs.js"></script>
     <link rel="stylesheet" crossorigin href="/your-energy/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/your-energy/assets/main-BNyMNLfJ.css">
+    <link rel="stylesheet" crossorigin href="/your-energy/assets/main-C2dIbtMo.css">
   </head>
 
   <body>
     <header>
       <div class="container header-container">
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main Navigation">
     <a class="logo" href="./index.html">
       <svg class="icon" width="132" height="24">
         <use href="/your-energy/assets/sprite-D8xu5p1j.svg#logo"></use>
@@ -152,7 +153,7 @@
         loading="lazy"
       />
     </picture>
-    <ul class="hero-tags">
+    <ul class="hero-tags" role="list">
       <li class="hero-tag">
         <a
           class="hero-tag-text"
@@ -237,19 +238,23 @@
           </div>
         </form>
       </div>
-      <ul class="filters-tabs">
+      <ul class="filters-tabs" role="tablist" aria-label="Exercise Categories">
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button active" id="button-muscles">
+          <button
+            class="filter-tab-button active"
+            id="button-muscles"
+            role="tab"
+          >
             Muscles
           </button>
         </li>
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button" id="button-bodypart">
+          <button class="filter-tab-button" id="button-bodypart" role="tab">
             Body parts
           </button>
         </li>
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button" id="button-equipment">
+          <button class="filter-tab-button" id="button-equipment" role="tab">
             Equipment
           </button>
         </li>
@@ -266,7 +271,7 @@
       </div>
       <div class="container pagination-container active"></div>
     </div>
-    <div class="quote-container">
+    <aside class="quote-container">
       <div class="box1-qoute">
         <svg id="icon-run" class="run-icon" width="34" height="32">
           <title>Icon Run</title>
@@ -312,7 +317,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
   <div class="loader-container">
     <span class="loader hidden"></span>
@@ -322,33 +327,54 @@
     </main>
 
     <footer>
-      <div class="footer">
+      <div class="container footer">
   <div class="footer__container">
     <div class="footer__logo-socials-wrapper">
       <div class="footer__logo-container">
-        <a href="/index.html" class="footer__logo">
+        <a href="/index.html" class="footer__logo" aria-label="Go to Home Page">
           <svg width="132" height="24">
             <use href="/your-energy/assets/sprite-D8xu5p1j.svg#logo"></use>
           </svg>
         </a>
       </div>
-      <ul class="footer__socials">
-        <li><a href="https://www.facebook.com/goITclub/"><svg>
-              <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-facebook"></use>
-            </svg></a></li>
-        <li><a href="https://www.instagram.com/goitclub/"><svg>
-              <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-instagram"></use>
-            </svg></a></li>
-        <li><a href="https://www.youtube.com/c/GoIT"><svg>
-              <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-youtube"></use>
-            </svg></a></li>
-      </ul>
+      <nav aria-label="Social Media Links">
+        <ul class="footer__socials">
+          <li>
+            <a href="https://www.facebook.com/goITclub/" aria-label="Facebook">
+              <svg>
+                <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/goitclub/"
+              aria-label="Instagram"
+            >
+              <svg>
+                <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/c/GoIT" aria-label="YouTube">
+              <svg>
+                <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-youtube"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
     <div class="footer__slogan-container">
-      <p class="footer__slogan"> Transforming your <strong>body</strong> shape with us </p>
+      <p class="footer__slogan">
+        Transforming your <strong>body</strong> shape with us
+      </p>
     </div>
     <form class="footer__form">
-      <h3 class="footer__form-title">Subscribe and learn about new exercises!</h3>
+      <h3 class="footer__form-title">
+        Subscribe and learn about new exercises!
+      </h3>
       <input type="email" class="footer__input" placeholder="Email" required />
       <button type="submit" class="footer__button">Send</button>
     </form>
@@ -363,6 +389,7 @@
     </div>
   </div>
 </div>
+
     </footer>
 
     <div class="modal-overlay hidden">

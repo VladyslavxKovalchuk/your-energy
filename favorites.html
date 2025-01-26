@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Energy</title>
     <script type="module" crossorigin src="/your-energy/assets/vendor-Cbhu4xvy.js"></script>
-    <script type="module" crossorigin src="/your-energy/assets/main-BEXj5-cW.js"></script>
-    <link rel="stylesheet" crossorigin href="/your-energy/assets/main-BNyMNLfJ.css">
+    <script type="module" crossorigin src="/your-energy/assets/main-DmFRJUOs.js"></script>
+    <link rel="stylesheet" crossorigin href="/your-energy/assets/main-C2dIbtMo.css">
     <link rel="stylesheet" crossorigin href="/your-energy/assets/vendor-DnveWo0P.css">
   </head>
   <body>
     <header>
       <div class="container header-container">
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main Navigation">
     <a class="logo" href="./index.html">
       <svg class="icon" width="132" height="24">
         <use href="/your-energy/assets/sprite-D8xu5p1j.svg#logo"></use>
@@ -103,7 +103,7 @@
           <h1 class="fav-title">Favorites</h1>
           <div class="fav-wrapper-primary">
             <div class="fav-bar">
-              <div class="fav-box1-info">
+              <!-- <div class="fav-box1-info">
                 <h2 class="fav-quote-title">Quote of the day</h2>
                 <p class="fav-quote-text">
                   A lot of times I find that people who are blessed with the
@@ -112,6 +112,27 @@
                   the biggest heart.
                 </p>
                 <p class="fav-quote-signature">Tom Brady</p>
+              </div> -->
+              <div class="box1-qoute">
+                <svg id="icon-run" class="run-icon" width="34" height="32">
+                  <title>Icon Run</title>
+                  <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-run"></use>
+                </svg>
+                <div class="box1-quote-content">
+                  <div class="quote-title-wrap">
+                    <h2 class="quote-title">Quote of the day</h2>
+                    <svg
+                      id="icon-commas"
+                      class="quote-icon"
+                      width="34"
+                      height="32"
+                    >
+                      <title>Icon Commas</title>
+                      <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-commas"></use>
+                    </svg>
+                  </div>
+                  <div class="js-quote"></div>
+                </div>
               </div>
               <div class="wrapper-img-content">
                 <div class="fav-box2-info">
@@ -130,7 +151,7 @@
                 </div>
               </div>
             </div>
-            <p class="fav-text-default">
+            <p class="fav-text-default is-visible">
               It appears that you haven't added any exercises to your favorites
               yet. To get started, you can add exercises that you like to your
               favorites for easier access in the future.
