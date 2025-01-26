@@ -23,4 +23,4 @@ jobs:
         with:
           directory: ./dist
           swap_urls: |
-            {"//your-energy": ""}
+            {"your-energy/": "./"}
