@@ -1,33 +1,32 @@
 'use strict';
+import 'izitoast/dist/css/iziToast.min.css';
+import iziToast from 'izitoast';
 import { drawMarkupList, fetchCardByID } from './fav-functions/helper';
+// import getAllIdFromLocalStorage from './js/localStorage';
 
 const list = document.querySelector('.fav-list-card');
 const textDefault = document.querySelector('.fav-text-default');
-
-let listId = [];
-const arrayID = [
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-];
+const ulEl = document.querySelector('.fav-list-card');
 let markupCards = '';
 let getData = [];
+let listId = [];
+
+ulEl.addEventListener('click', e => {
+  if (e.target.nodeName === 'use') {
+    const idCard =
+      e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+        .dataset.id;
+    const newArray = getData.filter(obj => obj._id !== idCard);
+    const newIDList = newArray.filter(obj => obj._id);
+    const filtrMArkup = drawMarkupList(newArray);
+    list.innerHTML = filtrMArkup;
+    localStorage.setItem('keyID', JSON.stringify(newIDList));
+  }
+});
 
 const readFromLS = async () => {
-  listId = JSON.parse(localStorage.getItem('keyID'));
+  // listId = getAllIdFromLocalStorage();
+  listID = JSON.parse(locale.storage("keyID"));
 
   if (listId === null) {
     listId = [];
@@ -48,11 +47,13 @@ const readFromLS = async () => {
         list.insertAdjacentHTML('beforeend', markupCards);
       }
     } catch (error) {
-      console.log(error.message);
+      iziToast.error({
+        title: 'Error',
+        message: `${error.message}`,
+        position: 'topRight',
+      });
     }
   }
 };
-
-localStorage.setItem('keyID', JSON.stringify(arrayID));
 if (list) 
   readFromLS();

@@ -31,11 +31,9 @@ export function removeIdFromLocalStorage(exerciseId){
         console.error('Error removing ID from localStorage:', error);
         return false;
     }
-    console.log("removed" + exerciseId)
 }
 
 export function isIdPresentInLocalStorage(exerciseId) {
-    console.log("try to check")
     try {
         const currentIds = JSON.parse(localStorage.getItem(localStorageKey) || '[]');
         return currentIds.includes(exerciseId);

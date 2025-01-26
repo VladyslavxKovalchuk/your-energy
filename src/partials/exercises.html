@@ -42,19 +42,23 @@
           </div>
         </form>
       </div>
-      <ul class="filters-tabs">
+      <ul class="filters-tabs" role="tablist" aria-label="Exercise Categories">
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button active" id="button-muscles">
+          <button
+            class="filter-tab-button active"
+            id="button-muscles"
+            role="tab"
+          >
             Muscles
           </button>
         </li>
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button" id="button-bodypart">
+          <button class="filter-tab-button" id="button-bodypart" role="tab">
             Body parts
           </button>
         </li>
         <li class="filter-tab-button-element">
-          <button class="filter-tab-button" id="button-equipment">
+          <button class="filter-tab-button" id="button-equipment" role="tab">
             Equipment
           </button>
         </li>
@@ -71,7 +75,7 @@
       </div>
       <div class="container pagination-container active"></div>
     </div>
-    <div class="quote-container">
+    <aside class="quote-container">
       <div class="box1-qoute">
         <svg id="icon-run" class="run-icon" width="34" height="32">
           <title>Icon Run</title>
@@ -117,7 +121,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
   <div class="loader-container">
     <span class="loader hidden"></span>

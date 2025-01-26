@@ -11,3 +11,4 @@ import './js/mobile-menu';
 import './js/header';
 import './js/footer';
 import './js/scroll-up';
+import './js/localStorage';
