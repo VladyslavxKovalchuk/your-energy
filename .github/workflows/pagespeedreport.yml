@@ -41,7 +41,7 @@ jobs:
         uses: stefafafan/psi-action@v1
         with:
           url: ${{ github.event.inputs.url }}
-          strategy: mobile
+          strategy: 'desktop'
           
       - name: Echo results desktop
         run: |
