@@ -1,8 +1,8 @@
-<section class="section--hero" aria-label="Hero section">
+<section class="section--hero" aria-labelledby="hero-section-title">
   <div class="container hero-container">
     <div class="hero-title-img">
-      <h1 class="hero-title">
-        <svg id="icon-sun" class="hero-icon" width="38" height="38">
+      <h1 class="hero-title" id="hero-section-title">
+        <svg id="icon-sun" class="hero-icon" width="38" height="38" aria-hidden="true">
           <title>Sun Icon</title>
           <use href="./img/sprite.svg#icon-sun"></use>
         </svg>
@@ -11,11 +11,13 @@
       <img
         class="hero-mini-img"
         src="./img/hero/hero_mini_img.jpg"
-        srcset="./img/hero/hero_mini_img@2x.jpg"
+        srcset="
+          ./img/hero/hero_mini_img.jpg    1x,
+          ./img/hero/hero_mini_img@2x.jpg 2x
+        "
         alt="young women doing fitness outdoors together"
         width="168"
         height="100"
-        loading="lazy"
       />
     </div>
     <p class="hero-text">
@@ -24,20 +26,30 @@
     </p>
     <picture class="hero-main-img">
       <source
-        media="(max-width: 767px)"
-        srcset="./img/hero/hero_mob.jpg 1x, ./img/hero/hero_mob@2x.jpg 2x"
+        media="(min-width: 1440px)"
+        srcset="./img/hero/hero_des.jpg 1x, ./img/hero/hero_des@2x.jpg 2x"
+        type="image/jpeg"
+        width="1376"
+        height="350"
       />
       <source
         media="(min-width: 768px) and (max-width: 1439px)"
         srcset="./img/hero/hero_tab.jpg 1x, ./img/hero/hero_tab@2x.jpg 2x"
+        type="image/jpeg"
+        width="704"
+        height="550"
       />
       <source
-        media="(min-width: 1440px)"
-        srcset="./img/hero/hero_des.jpg 1x, ./img/hero/hero_des@2x.jpg 2x"
+        srcset="./img/hero/hero_mob.jpg 1x, ./img/hero/hero_mob@2x.jpg 2x"
+        type="image/jpeg"
+        width="335"
+        height="460"
       />
       <img
         src="./img/hero/hero_mob.jpg"
         alt="women sportswear working out outdoors"
+        width="335"
+        height="460"
         loading="lazy"
       />
     </picture>

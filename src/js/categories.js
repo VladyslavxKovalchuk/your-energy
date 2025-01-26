@@ -19,7 +19,10 @@ export const createCategoriesItems = categoriesArr => {
       <img class="gallery-image"
            src="${el.imgURL}"
            alt="${el.name}"
-           loading="lazy"/>
+           loading="lazy"
+           width="335"
+           height="225"
+           />
             <div class="category-title">
               <h3>${el.name}</h3>
               <p>${el.filter}</p>
@@ -46,6 +49,7 @@ export const showCategories = async (filter, queriedPage) => {
     categoryListEl.innerHTML = createCategoriesItems(results);
     categoryListEl.addEventListener('click', onCategoryListElClick);
     categoryContainerEl.classList.add('active');
+    HideExercises();
     showPagination(
       '.pagination-container',
       queriedPage,
@@ -54,7 +58,6 @@ export const showCategories = async (filter, queriedPage) => {
       filter,
       page
     );
-    HideExercises();
   } catch (err) {
     console.log(err);
   } finally {
@@ -88,5 +91,5 @@ const findExerciseFilterType = filter => {
     value => value === lowerCaseFilter
   );
 };
-
-showCategories('Muscles', 1);
+if (categoryContainerEl)
+  showCategories('Muscles', 1);

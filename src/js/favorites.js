@@ -1,39 +1,50 @@
 'use strict';
+import 'izitoast/dist/css/iziToast.min.css';
+import iziToast from 'izitoast';
 import { drawMarkupList, fetchCardByID } from './fav-functions/helper';
+import {
+  getAllIdFromLocalStorage,
+  removeIdFromLocalStorage,
+} from './localStorage';
 
 const list = document.querySelector('.fav-list-card');
 const textDefault = document.querySelector('.fav-text-default');
 
-let listId = [];
-const arrayID = [
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-  '64f389465ae26083f39b17a7',
-  '64f389465ae26083f39b17a3',
-];
 let markupCards = '';
 let getData = [];
+let listId = [];
+
+if (window.location.pathname === '/favorites.html') {
+  list.addEventListener('click', e => {
+    if (e.target.nodeName === 'use') {
+      const idCard =
+        e.target.parentNode.parentNode.parentNode.parentNode.parentNode
+          .parentNode.dataset.id;
+      const answer = removeIdFromLocalStorage(idCard);
+
+      if (answer) {
+        iziToast.success({
+          title: 'OK',
+          message: 'Exercise removed!',
+          position: 'topRight',
+        });
+      } else {
+        iziToast.error({
+          title: 'Error',
+          message: 'Exercise is not removed!',
+          position: 'topRight',
+        });
+      }
+      readFromLS();
+    }
+  });
+}
 
 const readFromLS = async () => {
-  listId = JSON.parse(localStorage.getItem('keyID'));
-
-  if (listId === null) {
-    listId = [];
-  }
+  listId = getAllIdFromLocalStorage();
 
   if (listId.length === 0) {
+    list.innerHTML = '';
     if (textDefault.classList.contains('is-visible')) {
       textDefault.classList.remove('is-visible');
     }
@@ -43,16 +54,20 @@ const readFromLS = async () => {
       const promise = await Promise.all(listId.map(id => fetchCardByID(id)));
       getData = promise.map(obj => obj.data);
       markupCards = drawMarkupList(getData);
-      if (list) {
+      if (!textDefault.classList.contains('is-visible')) {
         textDefault.classList.add('is-visible');
-        list.insertAdjacentHTML('beforeend', markupCards);
       }
+      list.innerHTML = '';
+      list.insertAdjacentHTML('beforeend', markupCards);
     } catch (error) {
-      console.log(error.message);
+      iziToast.error({
+        title: 'Error',
+        message: `${error.message}`,
+        position: 'topRight',
+      });
     }
   }
 };
-
-localStorage.setItem('keyID', JSON.stringify(arrayID));
-
-readFromLS();
+if (list) {
+  readFromLS();
+}

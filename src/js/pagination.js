@@ -10,7 +10,7 @@ const onParentElClick = (callback, ...callbackParams) => {
       return;
     }
     const page = Number(event.target.closest(`li`).getAttribute('data-page'));
-    if (page == -1) {
+    if (page < 1) {
       return;
     }
     paginationEl.remove();

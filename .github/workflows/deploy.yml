@@ -3,6 +3,8 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
 
 jobs:
   build-and-deploy:
