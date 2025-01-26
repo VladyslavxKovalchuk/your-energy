@@ -20,67 +20,63 @@
     <header>
       <div class="container header-container">
   <nav class="nav" role="navigation" aria-label="Main Navigation">
-    <a class="logo" href="./index.html">
+    <a class="logo" href="./index.html" aria-label="Home">
       <svg class="icon" width="132" height="24">
         <use href="/your-energy/assets/sprite-D8xu5p1j.svg#logo"></use>
       </svg>
     </a>
 
-    <ul class="header-nav-list js-header-nav-list">
-      <li>
+    <ul class="header-nav-list js-header-nav-list" role="menubar">
+      <li role="none">
         <div class="nav-item">
-          <a class="nav-link" href="./index.html" aria-label="Move to Home page"
-            >Home</a
-          >
+          <a class="nav-link" href="./index.html" role="menuitem" aria-label="Home">Home</a>
         </div>
       </li>
-      <li>
+      <li role="none">
         <div class="nav-item">
-          <a
-            class="nav-link"
-            href="./favorites.html"
-            aria-label="Move to Favorites page"
-            >Favorites</a
-          >
+          <a class="nav-link" href="./favorites.html" role="menuitem" aria-label="Favorites">Favorites</a>
         </div>
       </li>
     </ul>
 
     <div class="social-media">
-      <ul class="icons-list">
-        <li class="media-icons">
+      <ul class="icons-list" role="menubar">
+        <li class="media-icons" role="none">
           <a
             class="media-links"
             href="https://www.facebook.com/goITclub/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook GoIT page"
+            role="menuitem"
           >
             <svg class="icon" width="28" height="28">
               <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-facebook"></use>
             </svg>
           </a>
         </li>
-        <li class="media-icons">
+        <li class="media-icons" role="none">
           <a
             class="media-links"
             href="https://www.instagram.com/goitclub/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram GoIT page"
+            role="menuitem"
           >
             <svg class="icon" width="28" height="28">
               <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-instagram"></use>
             </svg>
           </a>
         </li>
-        <li class="media-icons">
+        <li class="media-icons" role="none">
           <a
             class="media-links"
             href="https://www.youtube.com/c/GoIT"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Youtube GoIT page"
+            aria-label="YouTube GoIT page"
+            role="menuitem"
           >
             <svg class="icon" width="28" height="28">
               <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-youtube"></use>
@@ -91,21 +87,20 @@
     </div>
   </nav>
 
-  <button class="menu-btn" type="button" aria-label="Mobile menu">
+  <button class="menu-btn" type="button" aria-label="Open mobile menu">
     <svg class="icon header-menu" width="32" height="32">
       <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-menu"></use>
     </svg>
   </button>
 </div>
-
     </header>
 
     <main>
-      <section class="section--hero" aria-label="Hero section">
+      <section class="section--hero" aria-labelledby="hero-section-title">
   <div class="container hero-container">
     <div class="hero-title-img">
-      <h1 class="hero-title">
-        <svg id="icon-sun" class="hero-icon" width="38" height="38">
+      <h1 class="hero-title" id="hero-section-title">
+        <svg id="icon-sun" class="hero-icon" width="38" height="38" aria-hidden="true">
           <title>Sun Icon</title>
           <use href="/your-energy/assets/sprite-D8xu5p1j.svg#icon-sun"></use>
         </svg>
@@ -194,7 +189,6 @@
     </ul>
   </div>
 </section>
-
       <section class="section--exercises">
   <div class="filter-container container">
     <h2 class="filter-title">
