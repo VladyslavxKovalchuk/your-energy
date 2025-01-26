@@ -21,4 +21,4 @@ jobs:
       - name: Validate HTML
         uses: anishathalye/proof-html@v2
         with:
-          directory: 'dist'
+          directory: ./your-energy
