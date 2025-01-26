@@ -37,7 +37,7 @@
     border-color: var(--black);
 }
 
-.pagination-item:hover {
+.pagination-item:not([data-page="-1"]):not([data-page="0"]):hover {
     background-color: var(--black);
     fill: var(--white);
     color: var(--white);
