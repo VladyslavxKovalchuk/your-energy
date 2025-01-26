@@ -25,13 +25,13 @@ if (window.location.pathname === '/favorites.html') {
       if (answer) {
         iziToast.success({
           title: 'OK',
-          message: `${idCard} is deleting.`,
+          message: 'Exercise removed!',
           position: 'topRight',
         });
       } else {
         iziToast.error({
           title: 'Error',
-          message: `${idCard} is not deleting`,
+          message: 'Exercise is not removed!',
           position: 'topRight',
         });
       }
@@ -68,5 +68,6 @@ const readFromLS = async () => {
     }
   }
 };
-if (list) 
+if (list) {
   readFromLS();
+}
