@@ -22,5 +22,6 @@ jobs:
         uses: anishathalye/proof-html@v2
         with:
           directory: ./dist
+          disable_external: true
           swap_urls: |
             {"your-energy/": "./"}
