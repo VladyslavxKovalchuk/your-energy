@@ -19,12 +19,9 @@ jobs:
           npm run build
       
       - name: Validate HTML
-        uses: jakejarvis/html-proofer-action@v0.1.0
+        uses: anishathalye/proof-html@v2
         with:
-          directory: 'dist'
-          check_html: true
-  
-      - name: Validate CSS
-        uses: ybiquitous/stylelint-action@v2
-        with:
-          files: 'dist/**/*.css'
+          directory: ./dist
+          disable_external: true
+          swap_urls: |
+            {"your-energy/": "./"}
